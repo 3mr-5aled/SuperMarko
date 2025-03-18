@@ -2,7 +2,7 @@
 
 ## Overview
 
-Supermarko is a supermarket system application developed in C++ using structs, arrays, and functions. This project is designed to manage supermarket operations efficiently.
+Supermarko is a supermarket online shopping system developed in C++ using structs, arrays, and functions. This project is designed to manage supermarket operations efficiently, allowing customers to purchase products directly from the supermarket.
 
 ## Features
 
@@ -10,39 +10,18 @@ Supermarko is a supermarket system application developed in C++ using structs, a
 - **Inventory Tracking**: Keep track of product quantities.
 - **Sales Processing**: Handle customer purchases and generate receipts.
 - **Reporting**: Generate sales and inventory reports.
+- **Customer Functions**:
+  - Log in.
+  - Edit information.
+  - View products menu.
+  - View the information of the item that the customer has chosen.
+  - Select goods to add to the order.
+  - Review the order.
+  - Modify the order.
+  - View total price.
+  - Log out.
 
 ## Technologies Used
 
 - **Programming Language**: C++
 - **Data Structures**: Structs and Arrays
-
-## Getting Started
-
-1. Clone the repository.
-2. Open the project in your preferred C++ IDE.
-3. Compile and run the application.
-
-## Project Structure
-
-- `main.cpp`: The main entry point of the application.
-- `product.h`: Header file containing the product struct.
-- `inventory.cpp`: Source file for inventory management functions.
-- `sales.cpp`: Source file for sales processing functions.
-
-## Usage
-
-1. Launch the application.
-2. Follow the on-screen instructions to navigate through the menu.
-3. Perform operations such as adding products, processing sales, and generating reports.
-
-## Contributing
-
-Contributions are welcome! Please fork the repository and submit a pull request.
-
-## License
-
-This project is licensed under the MIT License.
-
-## Contact
-
-For any inquiries, please contact [your email].
