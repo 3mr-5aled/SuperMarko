@@ -15,43 +15,19 @@ using namespace std;
 
 int main()
 {
-    cout << "Welcome to SUPERMARKO" << endl;
+    cout << "*****************************" << endl;
+    cout << "*                           *" << endl;
+    cout << "*   Welcome to SUPERMARKO   *" << endl;
+    cout << "*                           *" << endl;
+    cout << "*****************************" << endl;
 
     // Initialize the orders array
-    ORDER orders[numOfOrders];
-    PRODUCT products[numOfProducts];
-    CUSTOMER customers[numOfCustomers];
+    // ORDER orders[numOfOrders];
+    // PRODUCT products[numOfProducts];
+    // CUSTOMER customers[numOfCustomers];
 
-    // Call the edit function
-    edit(orders, products, customers);
+    // Call the edit user info function
+    // editUserInformation(customers[i]);
 
     return 0;
-}
-
-// * Amr Khaled Section
-
-void edit(ORDER orders[], PRODUCT products[], CUSTOMER customers[])
-{
-    // select what you want to edit
-    cout << "Select what you want to edit" << endl;
-    cout << "1. Order" << endl;
-    cout << "2. Product" << endl;
-    cout << "3. Customer" << endl;
-    int choice;
-    cin >> choice;
-    switch (choice)
-    {
-    case 1:
-        editOrder(orders);
-        break;
-    case 2:
-        editProduct(products);
-        break;
-    case 3:
-        editCustomer(customers);
-        break;
-    default:
-        cout << "Invalid choice" << endl;
-        break;
-    }
 }
