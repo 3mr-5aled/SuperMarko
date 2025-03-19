@@ -10,7 +10,6 @@
 # Ignore build directories
 /build/
 /bin/
-/lib/
 /dist/
 
 # Ignore temporary files
