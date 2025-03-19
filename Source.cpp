@@ -49,9 +49,9 @@ Welcome to the Grocery Store Management System
 
     // Initialize the data arrays with fake data
     CUSTOMER customers[numOfCustomers] = {
-        {1, "John Doe", "123 Main St", "john@example.com"},
-        {2, "Jane Smith", "456 Elm St", "jane@example.com"},
-        {3, "Alice Johnson", "789 Oak St", "alice@example.com"}};
+        {1, "John Doe", "123 Main St", "john@example.com", "password"},
+        {2, "Jane Smith", "456 Elm St", "jane@example.com", "password"},
+        {3, "Alice Johnson", "789 Oak St", "alice@example.com", "password"}};
 
     // Call the edit user info function for the first customer
     editUserInformation(customers[0]);

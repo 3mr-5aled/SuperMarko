@@ -23,6 +23,7 @@ struct CUSTOMER
     string Name;
     string PhoneNumber;
     string Location;
+    string Password;
 };
 
 // product structure

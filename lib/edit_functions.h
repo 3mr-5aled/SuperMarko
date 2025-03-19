@@ -18,7 +18,8 @@ int displayMenu()
     cout << "1. Name" << endl;
     cout << "2. Phone Number" << endl;
     cout << "3. Location" << endl;
-    cout << RED << "4. Cancel" << RESET << endl;
+    cout << "4. Password" << endl;
+    cout << RED << "5. Cancel" << RESET << endl;
     cout << endl;
     cout << "Enter your choice: ";
     cin >> choice;
@@ -26,7 +27,6 @@ int displayMenu()
 }
 
 // Edit name
-
 bool editName(CUSTOMER &currentCustomer)
 {
     cout << "Enter the new name: ";
@@ -41,7 +41,6 @@ bool editName(CUSTOMER &currentCustomer)
 }
 
 // Edit phone number
-
 bool editPhoneNumber(CUSTOMER &currentCustomer)
 {
     cout << "Enter the new phone number: ";
@@ -56,7 +55,6 @@ bool editPhoneNumber(CUSTOMER &currentCustomer)
 }
 
 // Edit location
-
 bool editLocation(CUSTOMER &currentCustomer)
 {
     cout << "Enter the new location: ";
@@ -70,8 +68,30 @@ bool editLocation(CUSTOMER &currentCustomer)
     return true;
 }
 
-// Display updated information
+// Edit password
+bool editPassword(CUSTOMER &currentCustomer)
+{
+    string newPassword, confirmPassword;
+    cout << "Enter the new password: ";
+    cin.ignore();
+    getline(cin, newPassword);
+    if (newPassword.empty())
+    {
+        cout << RED << "Password cannot be empty. Please enter a valid password." << RESET << endl;
+        return false;
+    }
+    cout << "Retype the new password: ";
+    getline(cin, confirmPassword);
+    if (newPassword != confirmPassword)
+    {
+        cout << RED << "Passwords do not match. Please try again." << RESET << endl;
+        return false;
+    }
+    currentCustomer.Password = newPassword;
+    return true;
+}
 
+// Display updated information
 void displayUpdatedInformation(const CUSTOMER &currentCustomer)
 {
     cout << endl;
@@ -81,11 +101,11 @@ void displayUpdatedInformation(const CUSTOMER &currentCustomer)
     cout << "Name: " << currentCustomer.Name << endl;
     cout << "Phone Number: " << currentCustomer.PhoneNumber << endl;
     cout << "Location: " << currentCustomer.Location << endl;
+    cout << "Password: " << currentCustomer.Password << endl;
     cout << endl;
 }
 
 // Main function to edit user information
-
 void editUserInformation(CUSTOMER currentCustomer)
 {
     bool updated = false;
@@ -109,6 +129,9 @@ void editUserInformation(CUSTOMER currentCustomer)
             updated = editLocation(currentCustomer);
             break;
         case 4:
+            updated = editPassword(currentCustomer);
+            break;
+        case 5:
             cout << YELLOW << "No changes have been made" << RESET << endl;
             continueEditing = false;
             break;
