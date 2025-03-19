@@ -143,19 +143,28 @@ void editUserInformation(CUSTOMER currentCustomer)
         if (updated)
         {
             displayUpdatedInformation(currentCustomer);
-            cout << "Do you want to edit another data? (y/n): ";
             char editMore;
-            cin >> editMore;
-            if (editMore == 'n' || editMore == 'N')
+            do
             {
-                continueEditing = false;
-            }
+                cout << "Do you want to edit another data? (y/n): ";
+                cin >> editMore;
+                if (editMore == 'n' || editMore == 'N')
+                {
+                    continueEditing = false;
+                }
+                else if (editMore == 'y' || editMore == 'Y')
+                {
+                    continueEditing = true;
+                }
+                else
+                {
+                    cout << RED << "Invalid input. Please enter 'y' or 'n'." << RESET << endl;
+                }
+            } while (editMore != 'y' && editMore != 'Y' && editMore != 'n' && editMore != 'N');
         }
         else
-        {
             cout << YELLOW << "The information has not been updated" << RESET << endl;
-        }
-
-        cout << endl;
     }
+
+    cout << endl;
 }
