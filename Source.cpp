@@ -9,21 +9,33 @@
 #include "lib/edit_functions.h"
 using namespace std;
 
+// Define constants
+const int numOfProducts = 10;
+const int numOfOrders = 20;
+const int numOfCustomers = 10;
+const int numOfCategories = 10;
+const int productsPerCategory = 5;
+
+string categories[numOfCategories] = {"Fruits", "Vegetables", "Meat", "Fish", "Dairy", "Bakery", "Canned", "Frozen", "Beverages", "Snacks"};
+
 int main()
 {
+    cout << endl;
     cout << "*****************************" << endl;
     cout << "*                           *" << endl;
     cout << "*   Welcome to SUPERMARKO   *" << endl;
     cout << "*                           *" << endl;
     cout << "*****************************" << endl;
+    cout << endl;
 
-    // Initialize the orders array
-    // ORDER orders[numOfOrders];
-    // PRODUCT products[numOfProducts];
-    // CUSTOMER customers[numOfCustomers];
+    // Initialize the data arrays with fake data
+    CUSTOMER customers[numOfCustomers] = {
+        {1, "John Doe", "123 Main St", "john@example.com"},
+        {2, "Jane Smith", "456 Elm St", "jane@example.com"},
+        {3, "Alice Johnson", "789 Oak St", "alice@example.com"}};
 
-    // Call the edit user info function
-    // editUserInformation(customers[i]);
+    // Call the edit user info function for the first customer
+    editUserInformation(customers[0]);
 
     return 0;
 }
