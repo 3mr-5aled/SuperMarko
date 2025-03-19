@@ -1,16 +1,12 @@
-/* important dev notes */
-/*
-
-! use camelCase for variables and functions
-! use UpperCase for structures
-! use comments to explain the code
-
-*/
+// * Notes for developers:
+// * 1. Use camelCase for variables and functions.
+// * 2. Use UpperCase for structures.
+// * 3. Use comments to explain the code.
 
 #include <iostream>
 #include <string>
-#include "struct.h"
-#include "edit_functions.h"
+#include "lib/struct.h"
+#include "lib/edit_functions.h"
 using namespace std;
 
 int main()
