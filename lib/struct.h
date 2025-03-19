@@ -25,12 +25,6 @@ struct CUSTOMER
     string Location;
 };
 
-struct CATEGORY
-{
-    string Name;
-    PRODUCT Products[5];
-};
-
 // product structure
 struct PRODUCT
 {
