@@ -7,6 +7,7 @@
 #include <string>
 #include "lib/struct.h"
 #include "lib/edit_functions.h"
+#include "lib/taxes.h"
 using namespace std;
 
 // Define constants

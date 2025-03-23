@@ -15,6 +15,7 @@ ORDER getOrderbyID(int orderID, ORDER order[])
         {
             index = i;
             found = true;
+            break;
         }
     }
 
@@ -39,6 +40,7 @@ CUSTOMER getCustomerbyID(int customerID, CUSTOMER customer[])
         {
             index = i;
             found = true;
+            break;
         }
     }
 
@@ -63,6 +65,7 @@ PRODUCT getProductbyID(int productID, PRODUCT product[])
         {
             index = i;
             found = true;
+            break;
         }
     }
 
