@@ -6,6 +6,10 @@
 using namespace std;
 
 // Define the structures
+const int numOfProducts = 10;
+const int numOfCategories = 10;
+const int numOfOrders = 20;
+const int numOfCustomers = 10;
 
 // date structure
 struct DATE
@@ -24,18 +28,18 @@ struct CUSTOMER
     string PhoneNumber;
     string Location;
     string Password;
-};
+}customers[numOfCustomers];
 
 // product structure
 struct PRODUCT
 {
-    int Code;
+    string Code;
     string Name;
     string Category;
     DATE ProductionDate;
     DATE ExpiredDate;
     double Price;
-};
+}product[numOfCategories][numOfProducts];
 
 // order structure
 struct ORDER

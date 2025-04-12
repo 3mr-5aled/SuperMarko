@@ -1,5 +1,5 @@
 #include <iostream>
-#include <struct.h>
+#include "struct.h"
 using namespace std;
 
 // Get Functions
@@ -55,7 +55,7 @@ CUSTOMER getCustomerbyID(int customerID, CUSTOMER customer[])
 }
 
 // Get Product by ID
-PRODUCT getProductbyID(int productID, PRODUCT product[])
+PRODUCT getProductbyID(string productID, PRODUCT product[])
 {
     bool found = false;
     int index;

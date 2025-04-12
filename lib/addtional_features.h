@@ -1,10 +1,9 @@
 #include <iostream>
-#include <struct.h>
+#include "struct.h"
 using namespace std;
 
-ORDER &applyVAT(ORDER &order)
+ORDER applyVAT(ORDER &order,double VAT_RATE=0.14)
 {
-    const double VAT_RATE = 0.14;
     order.TotalPrice *= (1 + VAT_RATE);
     return order; // Return reference to modified order
 }

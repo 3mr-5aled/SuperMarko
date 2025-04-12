@@ -6,21 +6,21 @@
 #include <iostream>
 #include <string>
 #include "lib/struct.h"
+#include "lib/menu_functions.h"
+#include "lib/registeration.h"
 #include "lib/edit_functions.h"
 #include "lib/addtional_features.h"
+#include "lib/read_functions.h"
+
 using namespace std;
 
 // Define constants
-const int numOfProducts = 10;
-const int numOfOrders = 20;
-const int numOfCustomers = 10;
-const int numOfCategories = 10;
-const int productsPerCategory = 5;
 
-string categories[numOfCategories] = {"Fruits", "Vegetables", "Meat", "Fish", "Dairy", "Bakery", "Canned", "Frozen", "Beverages", "Snacks"};
 
 int main()
 {
+    read_product_from_file(product,numOfCategories,numOfProducts);
+    read_customer_from_file(customers,numOfCustomers);
 
     cout << R"(
 
@@ -48,14 +48,63 @@ Welcome to the Grocery Store Management System
             )"
          << endl;
 
-    // Initialize the data arrays with fake data
-    CUSTOMER customers[numOfCustomers] = {
-        {1, "John Doe", "123 Main St", "john@example.com", "password"},
-        {2, "Jane Smith", "456 Elm St", "jane@example.com", "password"},
-        {3, "Alice Johnson", "789 Oak St", "alice@example.com", "password"}};
+    
+    menu_logging_in(customers, numOfCustomers);
+	char number;
+	char choice;
+	
+	do{
+		number = bigmenu();
+	switch (number)
+	{
+	case '1':
+		cout << "\nYou selected: Edit your information\n";
+		cout << "###################################################################################################################\n";
+		editUserInformation(customers[0]);
+        break;
+	case '2':
 
-    // Call the edit user info function for the first customer
-    editUserInformation(customers[0]);
+		cout << "\nYou selected: View product menu\n";
+		cout << "###################################################################################################################\n";
+		Categories(product,numOfCategories,numOfProducts);
+		break;
+
+	case '3':
+		cout << "\nYou selected: Add goods\n";
+		cout << "###################################################################################################################\n";
+
+		break;
+	case '4':
+		cout << "\nYou selected: Review your order\n";
+		cout << "###################################################################################################################\n";
+
+		break;
+	case '5':
+		cout << "\nYou selected: Modify your order\n";
+		cout << "###################################################################################################################\n";
+
+		break;
+	case '6':
+		cout << "\nYou selected: View total price\n";
+		cout << "###################################################################################################################\n";
+		break;
+	case '7':
+		cout << "\nLogging out...\n";
+		cout << "###################################################################################################################\n";
+
+		break;
+	default:
+		cout << "\nInvalid input, please enter a number between 1 and 7.\n";
+		cout << "###################################################################################################################\n";
+		choice = 'y';
+		continue;
+
+	}
+	cout << "Do you want anoter operation?";
+
+	cin >> choice;
+
+      } while (choice=='y'||choice=='Y');
 
     cout << "EXITING PROGRAM ..." << endl;
 

@@ -32,8 +32,8 @@ Supermarko is a 🏬 supermarket online shopping system developed in **C++**, ut
 
 1. 🏅 **Amr Khaled Hassan Morcy**
 2. 🏅 **Omar Mohammed Abdelmoaty**
-3. 🏅 **Moahmoud AbdelSalam**
-4. 🏅 **Moahmmed Gamal**
-5. 🏅 **Mohanad**
-6. 🏅 **Essam Elattar**
-7. 🏅 **Yousef**
+3. 🏅 **Mahmoud Mohamed AbdelSalam**
+4. 🏅 **Moahmmed Gamal Abbas**
+5. 🏅 **Mohanad Refaye Hussein**
+6. 🏅 **Essam Mohamed El-Shahat**
+7. 🏅 **Youssef Isamil Abdelmonsif**
