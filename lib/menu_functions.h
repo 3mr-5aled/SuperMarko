@@ -8,10 +8,6 @@ const int  NUMBEROFPRODUCT = 10;
 
 
 
-
-
-
-
 char bigmenu()
 {
 	char number;
