@@ -41,6 +41,7 @@ void Categories(PRODUCT product[CATEGORY][NUMBEROFPRODUCT], const int CATEGORY, 
 	char choice;
 	while (true)
 	{
+		bool returnToCategoryMenu = false; // At the beginning of the outer loop
 		cout << endl;
 		cout << BOLD << BLUE << "\n========= SUPERMARKET CATEGORIES =========\n"
 			 << RESET;
@@ -98,7 +99,14 @@ void Categories(PRODUCT product[CATEGORY][NUMBEROFPRODUCT], const int CATEGORY, 
 			{
 				cout << YELLOW << "Please choose a product by entering a number between 1 and 10.\n"
 					 << RESET;
+				cout<<YELLOW<<"Enter 0 to return to categories\n"<<RESET;
 				cin >> number;
+				if (number == 0)
+    {
+        cout << BLUE << "Returning to category menu...\n" << RESET;
+		returnToCategoryMenu=true;
+        break;
+    }
 				if (!(number >= 1 && number <= 10))
 				{
 					cout << RED << "There is no choice like this" << RESET << endl;
@@ -121,6 +129,9 @@ void Categories(PRODUCT product[CATEGORY][NUMBEROFPRODUCT], const int CATEGORY, 
 				 << RESET;
 			continue;
 		}
+
+		if (returnToCategoryMenu)
+				continue; // skip the "Do you want to continue?" and go back to the top
 
 		cout << GREEN << "Do you want to continue? (y/n)" << RESET << endl;
 		cin >> choice;
