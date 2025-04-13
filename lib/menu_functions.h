@@ -3,92 +3,92 @@
 #include <fstream>
 #include <string>
 using namespace std;
-const int  CATEGORY = 10;
-const int  NUMBEROFPRODUCT = 10;
 
-
+const int CATEGORY = 10;
+const int NUMBEROFPRODUCT = 10;
 
 char bigmenu()
 {
 	char number;
 
-
-
+	cout << BOLD << CYAN;
 	cout << "            =============================================\n";
 	cout << "                        # WELCOME TO OUR SYSTEM #        \n";
 	cout << "            =============================================\n";
-	cout << endl;
+	cout << RESET << endl;
 
 	cout << "\n";
 	cout << "\n";
-	cout << "*  press (1) to edit your information.                                   * \n";
-	cout << "*  press (2) to view your product menu.                                  * \n";
-	cout << "*  press (3) to add goods.                                               * \n";
-	cout << "*  press (4) to review your order.                                       * \n";
-	cout << "*  press (5) to modify your order.                                       *\n";
-	cout << "*  press (6) to view your total price.                                   * \n";
-	cout << "*  press (7) to log out.                                                 * \n";
+	cout << GREEN << "*  Press (1) to edit your information.                                   *\n";
+	cout << "*  Press (2) to view your product menu.                                  *\n";
+	cout << "*  Press (3) to add goods.                                               *\n";
+	cout << "*  Press (4) to review your order.                                       *\n";
+	cout << "*  Press (5) to modify your order.                                       *\n";
+	cout << "*  Press (6) to view your total price.                                   *\n";
+	cout << "*  Press (7) to log out.                                                 *\n";
+	cout << RESET << "\n";
 	cout << "\n";
-	cout << "\n";
-	cout << "Please enter the number  you want to choose from the  above list (1-7) :";
+	cout << YELLOW << "Please enter the number you want to choose from the above list (1-7): " << RESET;
 
 	cin >> number;
 
-
 	return number;
-
 }
 
-
-
-void Categories(PRODUCT product[CATEGORY][NUMBEROFPRODUCT],const int CATEGORY,const int NUMBEROFPRODUCT) {
+void Categories(PRODUCT product[CATEGORY][NUMBEROFPRODUCT], const int CATEGORY, const int NUMBEROFPRODUCT)
+{
 	int numberofcategory;
 	char choice;
-	while (true) {
+	while (true)
+	{
 		cout << endl;
-		cout << "\n========= SUPERMARKET CATEGORIES =========\n";
-		cout << "1. Fresh Produce (fruits)\n";
-		cout << "2. Fresh Produce (vegetable)\n";
-		cout << "3. Dairy & Eggs\n";
-		cout << "4. Butcher Shop\n";
-		cout << "5. Seafood\n";
-		cout << "6. Poultry\n";
-		cout << "7. Bakery & Bread\n";
-		cout << "8. Snacks & Sweets\n";
-		cout << "9. Household & Cleaning Supplies\n";
-		cout << "10.Pet Supplies\n";
-		cout << "11.Return to big menu.\n";
-		cout << "===========================================\n";
-		cout << "Please enter the category number: ";
+		cout << BOLD << BLUE << "\n========= SUPERMARKET CATEGORIES =========\n"
+			 << RESET;
+		cout << GREEN << "1.  Fresh Produce (fruits)\n";
+		cout << "2.  Fresh Produce (vegetable)\n";
+		cout << "3.  Dairy & Eggs\n";
+		cout << "4.  Butcher Shop\n";
+		cout << "5.  Seafood\n";
+		cout << "6.  Poultry\n";
+		cout << "7.  Bakery & Bread\n";
+		cout << "8.  Snacks & Sweets\n";
+		cout << "9.  Household & Cleaning Supplies\n";
+		cout << "10. Pet Supplies\n";
+		cout << "11. Return to big menu.\n"
+			 << RESET;
+		cout << BOLD << BLUE << "===========================================\n"
+			 << RESET;
+		cout << YELLOW << "Please enter the category number: " << RESET;
 
 		cin >> numberofcategory;
 
 		if (numberofcategory > 0 && numberofcategory < 11)
 		{
-			cout << "\n\t\t\t\tYou selected : " << product[numberofcategory - 1][0].Category << " of category.\n";
-			cout << "\t\t\t\t**";
+			cout << PURPLE << "\n\t\t\t\tYou selected: " << product[numberofcategory - 1][0].Category << " of category.\n"
+				 << RESET;
+			cout << "*******************************************************************\n";
+			cout << "|                       PRODUCT LIST                               |\n";
+			cout << "*******************************************************************\n";
+			cout << "|  Number of product  |  Name  |  Code  |  Production Date  |  Expired Date  |  Price  |\n";
 			cout << endl;
 			cout << endl;
 			for (int numberOfProductIndex = 0; numberOfProductIndex < NUMBEROFPRODUCT; numberOfProductIndex++)
 			{
 				if (!product[numberofcategory - 1][numberOfProductIndex].Code.empty())
 				{
-					cout << "Number of product:" << numberOfProductIndex + 1 << " \t|";
-					cout << "Name: " << product[numberofcategory - 1][numberOfProductIndex].Name << "  \t|";
-					
-					cout << "Code: " << product[numberofcategory - 1][numberOfProductIndex].Code << endl;
-					
+					cout << CYAN << "Number of product: " << numberOfProductIndex + 1 << " \t|";
+					cout << " Name: " << product[numberofcategory - 1][numberOfProductIndex].Name << "  \t|";
+					cout << " Code: " << product[numberofcategory - 1][numberOfProductIndex].Code << endl;
 
-					cout << "Production Date: " << product[numberofcategory - 1][numberOfProductIndex].ProductionDate.Day << "-"
-						<< product[numberofcategory - 1][numberOfProductIndex].ProductionDate.Month << "-"
-						<< product[numberofcategory - 1][numberOfProductIndex].ProductionDate.Year << " \t|";
+					cout << " Production Date: " << product[numberofcategory - 1][numberOfProductIndex].ProductionDate.Day << "-"
+						 << product[numberofcategory - 1][numberOfProductIndex].ProductionDate.Month << "-"
+						 << product[numberofcategory - 1][numberOfProductIndex].ProductionDate.Year << " \t|";
 
-					cout << "Expired Date: " << product[numberofcategory - 1][numberOfProductIndex].ExpiredDate.Day << "-"
-						<< product[numberofcategory - 1][numberOfProductIndex].ExpiredDate.Month << "-"
-						<< product[numberofcategory - 1][numberOfProductIndex].ExpiredDate.Year << " \t|";
+					cout << " Expired Date: " << product[numberofcategory - 1][numberOfProductIndex].ExpiredDate.Day << "-"
+						 << product[numberofcategory - 1][numberOfProductIndex].ExpiredDate.Month << "-"
+						 << product[numberofcategory - 1][numberOfProductIndex].ExpiredDate.Year << " \t|";
 
-
-					cout << "Price : " << product[numberofcategory - 1][numberOfProductIndex].Price << " EGP/Kg" << endl;
+					cout << " Price: " << product[numberofcategory - 1][numberOfProductIndex].Price << " EGP/Kg" << RESET << endl;
 					cout << "\t================================================================\n";
 				}
 			}
@@ -96,20 +96,20 @@ void Categories(PRODUCT product[CATEGORY][NUMBEROFPRODUCT],const int CATEGORY,co
 			char answerofproduct;
 			do
 			{
-				cout << "Please choose a product by entering a number betwen 1 and 10.\n";
+				cout << YELLOW << "Please choose a product by entering a number between 1 and 10.\n"
+					 << RESET;
 				cin >> number;
-                if (!(number >=1 && number <= 10))
-                {
-                    cout<<"there is no choice like this"<<endl;
-                    answerofproduct ='y';
-                    continue;
-                }
-                
+				if (!(number >= 1 && number <= 10))
+				{
+					cout << RED << "There is no choice like this" << RESET << endl;
+					answerofproduct = 'y';
+					continue;
+				}
 
-				cout << "Do you want choose another product?\n";
+				cout << GREEN << "Do you want to choose another product? (y/n)\n"
+					 << RESET;
 				cin >> answerofproduct;
-			} while (answerofproduct=='y'||answerofproduct=='Y');
-
+			} while (answerofproduct == 'y' || answerofproduct == 'Y');
 		}
 		else if (numberofcategory == 11)
 		{
@@ -117,11 +117,12 @@ void Categories(PRODUCT product[CATEGORY][NUMBEROFPRODUCT],const int CATEGORY,co
 		}
 		else
 		{
-			cout << "\nInvalid input, please enter a number between 1 and 10.\n";
+			cout << RED << "\nInvalid input, please enter a number between 1 and 10.\n"
+				 << RESET;
 			continue;
 		}
 
-		cout << "Do you want to continue? (y/n)" << endl;
+		cout << GREEN << "Do you want to continue? (y/n)" << RESET << endl;
 		cin >> choice;
 
 		if (choice == 'n' || choice == 'N')
@@ -136,8 +137,9 @@ void Categories(PRODUCT product[CATEGORY][NUMBEROFPRODUCT],const int CATEGORY,co
 		{
 			while (true)
 			{
-				cout << "\nInvalid input, please enter 'y' or 'n'.\n";
-				cout << "Do you want to continue? (y/n): ";
+				cout << RED << "\nInvalid input, please enter 'y' or 'n'.\n"
+					 << RESET;
+				cout << YELLOW << "Do you want to continue? (y/n): " << RESET;
 				cin >> choice;
 
 				if (choice == 'y' || choice == 'Y')
@@ -146,12 +148,9 @@ void Categories(PRODUCT product[CATEGORY][NUMBEROFPRODUCT],const int CATEGORY,co
 				}
 				else if (choice == 'n' || choice == 'N')
 				{
-					
 					return;
 				}
-
 			}
 		}
 	}
 }
-

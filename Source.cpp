@@ -28,7 +28,7 @@ int main()
 	read_product_from_file(product, numOfCategories, numOfProducts);
 	read_customer_from_file(customers, numOfCustomers, myfile);
 
-	cout << R"(
+	cout << ORANGE << R"(
 
 ⠀⠀⠈⠛⠻⠶⣶⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠈⢻⣆⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⠀⠀⠀
@@ -52,7 +52,7 @@ Welcome to the Grocery Store Management System
                                                                  made by: real developers                                         
 
             )"
-		 << endl;
+		 << RESET << endl;
 
 	int flag = menu_logging_in(customers, numOfCustomers, myfile, id);
 
@@ -73,14 +73,14 @@ Welcome to the Grocery Store Management System
 			cout << "###################################################################################################################\n";
 			cout << endl;
 			editUserInformation(getCustomerbyID(id, customers, numOfCustomers));
-			choice='y';
+			choice = 'y';
 			continue;
 		case '2':
 			cout << "\nYou selected: View product menu\n";
 			cout << "###################################################################################################################\n";
 			cout << endl;
 			Categories(product, numOfCategories, numOfProducts);
-			choice ='y';
+			choice = 'y';
 			continue;
 
 		case '3':
