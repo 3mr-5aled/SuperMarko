@@ -27,14 +27,15 @@ ORDER getOrderbyID(int orderID, ORDER order[])
     {
         cout << "Order not found" << endl;
     }
+    return ORDER();
 }
 
 // Get Customer by ID
-CUSTOMER getCustomerbyID(int customerID, CUSTOMER customer[])
+CUSTOMER getCustomerbyID(int customerID, CUSTOMER customer[],const int numofcustomers)
 {
     bool found = false;
     int index;
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < numOfCustomers; i++)
     {
         if (customer[i].ID == customerID)
         {
@@ -52,6 +53,7 @@ CUSTOMER getCustomerbyID(int customerID, CUSTOMER customer[])
     {
         cout << "Customer not found" << endl;
     }
+    return CUSTOMER();
 }
 
 // Get Product by ID
@@ -77,4 +79,5 @@ PRODUCT getProductbyID(string productID, PRODUCT product[])
     {
         cout << "Product not found" << endl;
     }
+    return PRODUCT();
 }

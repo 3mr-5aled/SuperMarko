@@ -34,25 +34,18 @@ void read_product_from_file(PRODUCT product[CATEGORY][NUMBEROFPRODUCT],const int
 }
 
 
-void read_customer_from_file(CUSTOMER customers[], const int numerofcustomers){
-    fstream myfile;
-	myfile.open("customers.txt", ios::in);
-	if (!myfile)
-	{
-		cout << "Error: Could not open customers file!\n";
+void read_customer_from_file(CUSTOMER customers[], const int numerofcustomers,fstream &myfile){
+    
+	myfile.clear(); // clear any flags
+    myfile.seekg(0); // move to beginning of file
 
-		return;
-	}
-    for (int i = 0; i < numerofcustomers; i++)
-    {
+    for (int i = 0; i < numerofcustomers; i++) {
         if (!(myfile >> customers[i].ID)) break;
         myfile.ignore();
-        getline(myfile,customers[i].Name);
-        
-        myfile>>customers[i].PhoneNumber;
+        getline(myfile, customers[i].Name);
+        myfile >> customers[i].PhoneNumber;
         myfile.ignore();
-        getline(myfile,customers[i].Location);
-        myfile>>customers[i].Password;
+        getline(myfile, customers[i].Location);
+        myfile >> customers[i].Password;
     }
-    myfile.close();
 }

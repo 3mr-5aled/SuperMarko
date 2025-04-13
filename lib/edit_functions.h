@@ -3,6 +3,7 @@
 #include "struct.h"
 using namespace std;
 
+
 // ANSI escape codes for styling terminal output
 const string RESET = "\033[0m";
 const string BOLD = "\033[1m";

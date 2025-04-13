@@ -11,15 +11,22 @@
 #include "lib/edit_functions.h"
 #include "lib/addtional_features.h"
 #include "lib/read_functions.h"
+#include "lib/get_functions.h"
 
 using namespace std;
 
-// Define constants
-
 int main()
 {
+	fstream myfile("customers.txt", ios::in | ios::out | ios::app);
+	if (!myfile.is_open())
+	{
+		cout << "Error opening the file.\n";
+		return 1;
+	}
+	int id = 1;
+
 	read_product_from_file(product, numOfCategories, numOfProducts);
-	read_customer_from_file(customers, numOfCustomers);
+	read_customer_from_file(customers, numOfCustomers, myfile);
 
 	cout << R"(
 
@@ -47,22 +54,27 @@ Welcome to the Grocery Store Management System
             )"
 		 << endl;
 
-	menu_logging_in(customers, numOfCustomers);
+	int flag = menu_logging_in(customers, numOfCustomers, myfile, id);
+
 	char number;
 	char choice;
 
+	if (!flag)
+	{
+		return 0;
+	}
+	bigmenu();
 	do
 	{
-		number = bigmenu();
+
 		switch (number)
 		{
 		case '1':
 			cout << "\nYou selected: Edit your information\n";
 			cout << "###################################################################################################################\n";
-			editUserInformation(customers[0]);
+			editUserInformation(getCustomerbyID(id, customers, numOfCustomers));
 			break;
 		case '2':
-
 			cout << "\nYou selected: View product menu\n";
 			cout << "###################################################################################################################\n";
 			Categories(product, numOfCategories, numOfProducts);
@@ -90,8 +102,12 @@ Welcome to the Grocery Store Management System
 		case '7':
 			cout << "\nLogging out...\n";
 			cout << "###################################################################################################################\n";
+			flag = menu_logging_in(customers, numOfCustomers, myfile, id);
+			if (!flag)
+				return 0;
 
-			break;
+			choice = 'y';
+			continue;
 		default:
 			cout << "\nInvalid input, please enter a number between 1 and 7.\n";
 			cout << "###################################################################################################################\n";
@@ -104,7 +120,6 @@ Welcome to the Grocery Store Management System
 
 	} while (choice == 'y' || choice == 'Y');
 
-	cout << "EXITING PROGRAM ..." << endl;
-
+	myfile.close();
 	return 0;
 }
