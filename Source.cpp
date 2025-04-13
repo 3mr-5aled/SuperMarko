@@ -71,36 +71,43 @@ Welcome to the Grocery Store Management System
 		case '1':
 			cout << "\nYou selected: Edit your information\n";
 			cout << "###################################################################################################################\n";
+			cout << endl;
 			editUserInformation(getCustomerbyID(id, customers, numOfCustomers));
 			break;
 		case '2':
 			cout << "\nYou selected: View product menu\n";
 			cout << "###################################################################################################################\n";
+			cout << endl;
 			Categories(product, numOfCategories, numOfProducts);
 			break;
 
 		case '3':
 			cout << "\nYou selected: Add goods\n";
 			cout << "###################################################################################################################\n";
+			cout << endl;
 
 			break;
 		case '4':
 			cout << "\nYou selected: Review your order\n";
 			cout << "###################################################################################################################\n";
+			cout << endl;
 
 			break;
 		case '5':
 			cout << "\nYou selected: Modify your order\n";
 			cout << "###################################################################################################################\n";
+			cout << endl;
 
 			break;
 		case '6':
 			cout << "\nYou selected: View total price\n";
 			cout << "###################################################################################################################\n";
+			cout << endl;
 			break;
 		case '7':
 			cout << "\nLogging out...\n";
 			cout << "###################################################################################################################\n";
+			cout << endl;
 			flag = menu_logging_in(customers, numOfCustomers, myfile, id);
 			if (!flag)
 				return 0;
@@ -110,6 +117,7 @@ Welcome to the Grocery Store Management System
 		default:
 			cout << "\nInvalid input, please enter a number between 1 and 7.\n";
 			cout << "###################################################################################################################\n";
+			cout << endl;
 			choice = 'y';
 			continue;
 		}
