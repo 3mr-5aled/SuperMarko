@@ -63,10 +63,9 @@ Welcome to the Grocery Store Management System
 	{
 		return 0;
 	}
-	bigmenu();
 	do
 	{
-
+		number = bigmenu();
 		switch (number)
 		{
 		case '1':
