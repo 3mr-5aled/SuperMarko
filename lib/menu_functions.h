@@ -26,10 +26,10 @@ char bigmenu()
 	cout << "*  Press (4) to review your order.                                       *\n";
 	cout << "*  Press (5) to modify your order.                                       *\n";
 	cout << "*  Press (6) to view your total price.                                   *\n";
-	cout << "*  Press (7) to log out.                                                 *\n";
+	cout << "*  Press (0) to log out.                                                 *\n";
 	cout << RESET << "\n";
 	cout << "\n";
-	cout << YELLOW << "Please enter the number you want to choose from the above list (1-7): " << RESET;
+	cout << YELLOW << "Please enter the number you want to choose from the above list (1-6): " << RESET;
 
 	cin >> number;
 
@@ -56,7 +56,7 @@ void Categories(PRODUCT product[CATEGORY][NUMBEROFPRODUCT], const int CATEGORY, 
 		cout << "8.  Snacks & Sweets\n";
 		cout << "9.  Household & Cleaning Supplies\n";
 		cout << "10. Pet Supplies\n";
-		cout << "11. Return to big menu.\n"
+		cout << "0. Return to big menu.\n"
 			 << RESET;
 		cout << BOLD << BLUE << "===========================================\n"
 			 << RESET;
@@ -131,7 +131,7 @@ void Categories(PRODUCT product[CATEGORY][NUMBEROFPRODUCT], const int CATEGORY, 
 			} while (answerofproduct == 'y' || answerofproduct == 'Y');
 		}
 
-		else if (numberofcategory == 11)
+		else if (numberofcategory == 0)
 		{
 			return;
 		}

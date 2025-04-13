@@ -12,7 +12,7 @@ int displayMenu()
     cout << BOLD << "2. " << GREEN << "Phone Number" << RESET << endl;
     cout << BOLD << "3. " << GREEN << "Location" << RESET << endl;
     cout << BOLD << "4. " << GREEN << "Password" << RESET << endl;
-    cout << BOLD << "5. " << RED << "Cancel" << RESET << endl;
+    cout << BOLD << "0. " << RED << "Cancel" << RESET << endl;
     cout << endl;
     cout << BOLD << YELLOW << "Enter your choice: " << RESET;
     cin >> choice;
@@ -75,9 +75,9 @@ bool editPassword(CUSTOMER &currentCustomer)
     cout << BOLD << CYAN << "Enter the new password: " << RESET;
     newPassword = "";
 
-    while ((ch = _getch()) != '\r')  // Enter to finish
+    while ((ch = _getch()) != '\r') // Enter to finish
     {
-        if (ch == '\b' && !newPassword.empty())  // Backspace
+        if (ch == '\b' && !newPassword.empty()) // Backspace
         {
             newPassword.pop_back();
             cout << "\b \b";
@@ -160,15 +160,18 @@ void editUserInformation(CUSTOMER customers[], int id, int numOfCustomers)
     bool updated = false;
     bool continueEditing = true;
     int index = -1;
-    
-    for (int i = 0; i < numOfCustomers; i++) {
-        if (customers[i].ID == id) {
+
+    for (int i = 0; i < numOfCustomers; i++)
+    {
+        if (customers[i].ID == id)
+        {
             index = i;
             break;
         }
     }
 
-    if (index == -1) {
+    if (index == -1)
+    {
         cout << RED << "Customer with ID " << id << " not found." << RESET << endl;
         return;
     }
@@ -194,7 +197,7 @@ void editUserInformation(CUSTOMER customers[], int id, int numOfCustomers)
         case 4:
             updated = editPassword(customers[index]);
             break;
-        case 5:
+        case 0:
             cout << YELLOW << BOLD << "No changes have been made." << RESET << endl;
             continueEditing = false;
             break;

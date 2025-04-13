@@ -1,6 +1,6 @@
 #include <iostream>
 #include "struct.h"
-#include<conio.h>
+#include <conio.h>
 using namespace std;
 
 int loginUser(CUSTOMER customers[], const int numerofcustomers);
@@ -76,7 +76,7 @@ int menu_logging_in(CUSTOMER customers[], const int numerofcustomers, fstream &m
     cout << YELLOW << "Do you want to register or login?" << RESET << endl;
     cout << BLUE << "1. Register" << RESET << endl;
     cout << BLUE << "2. Login" << RESET << endl;
-    cout << BLUE << "3. Exit The Program" << RESET << endl;
+    cout << BLUE << "0. Exit The Program" << RESET << endl;
     cout << CYAN << "Enter your choice: " << RESET;
     cin >> choice;
 
@@ -87,14 +87,14 @@ int menu_logging_in(CUSTOMER customers[], const int numerofcustomers, fstream &m
     else if (choice == 2)
     {
         id = loginUser(customers, numerofcustomers);
-    
+
         if (id == 0)
         {
             flag = 0;
             cout << RED << "LOGIN FAILED!....." << RESET << endl;
         }
     }
-    else if (choice == 3)
+    else if (choice == 0)
     {
         cout << GREEN << "EXITING PROGRAM ..." << RESET << endl;
         flag = 0;
@@ -102,7 +102,7 @@ int menu_logging_in(CUSTOMER customers[], const int numerofcustomers, fstream &m
     else
     {
         cout << RED << "Invalid choice" << RESET << endl;
-        flag=0;
+        flag = 0;
     }
     return flag;
 }
