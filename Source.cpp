@@ -66,9 +66,8 @@ Welcome to the Grocery Store Management System
 	{
 		return 0;
 	}
-	bigmenu();
 	do{
-	
+		number = bigmenu();
 	switch (number)
 	{
 	case '1':
@@ -121,7 +120,7 @@ Welcome to the Grocery Store Management System
 
 	cin >> choice;
 
-      } while (choice=='y'||choice=='Y');
+    } while (choice=='y'||choice=='Y');
 
    
 	myfile.close();
