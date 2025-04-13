@@ -113,7 +113,7 @@ void Categories(PRODUCT product[CATEGORY][NUMBEROFPRODUCT],const int CATEGORY,co
 		}
 		else if (numberofcategory == 11)
 		{
-			bigmenu();
+			return;
 		}
 		else
 		{
@@ -126,9 +126,7 @@ void Categories(PRODUCT product[CATEGORY][NUMBEROFPRODUCT],const int CATEGORY,co
 
 		if (choice == 'n' || choice == 'N')
 		{
-			bigmenu();
 			return;
-
 		}
 		else if (choice == 'y' || choice == 'Y')
 		{
@@ -148,7 +146,7 @@ void Categories(PRODUCT product[CATEGORY][NUMBEROFPRODUCT],const int CATEGORY,co
 				}
 				else if (choice == 'n' || choice == 'N')
 				{
-					bigmenu();
+					
 					return;
 				}
 

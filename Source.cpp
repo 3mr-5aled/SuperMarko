@@ -73,13 +73,15 @@ Welcome to the Grocery Store Management System
 			cout << "###################################################################################################################\n";
 			cout << endl;
 			editUserInformation(getCustomerbyID(id, customers, numOfCustomers));
-			break;
+			choice='y';
+			continue;
 		case '2':
 			cout << "\nYou selected: View product menu\n";
 			cout << "###################################################################################################################\n";
 			cout << endl;
 			Categories(product, numOfCategories, numOfProducts);
-			break;
+			choice ='y';
+			continue;
 
 		case '3':
 			cout << "\nYou selected: Add goods\n";
