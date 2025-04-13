@@ -53,14 +53,15 @@ struct ORDER
 const string RESET = "\033[0m";
 const string BOLD = "\033[1m";
 const string UNDERLINE = "\033[4m";
-const string RED = "\033[31m";
-const string GREEN = "\033[32m";
-const string YELLOW = "\033[93m";
-const string BLUE = "\033[34m";
-const string CYAN = "\033[36m";
-const string PURPLE = "\033[35m";
-const string WHITE_BG = "\033[47m";
-const string BLACK_TEXT = "\033[30m";
-const string ORANGE = "\033[38;5;214m";
+const string RED = "\033[91m";          // Bright red
+const string GREEN = "\033[92m";        // Bright green
+const string YELLOW = "\033[93m";       // Bright yellow
+const string BLUE = "\033[94m";         // Bright blue
+const string CYAN = "\033[96m";         // Bright cyan
+const string PURPLE = "\033[95m";       // Bright magenta
+const string WHITE_BG = "\033[107m";    // Bright white background
+const string BLACK_TEXT = "\033[90m";   // Bright black (gray) text
+const string ORANGE = "\033[38;5;214m"; // Bright orange
+const string TEAL = "\033[36m";         // Teal color
 
 #endif // STRUCT_H
