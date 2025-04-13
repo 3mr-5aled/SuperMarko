@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <iomanip>
 using namespace std;
 
 const int CATEGORY = 10;
@@ -65,51 +66,60 @@ void Categories(PRODUCT product[CATEGORY][NUMBEROFPRODUCT], const int CATEGORY, 
 
 		if (numberofcategory > 0 && numberofcategory < 11)
 		{
-			cout << PURPLE << "\n\t\t\t\tYou selected: " << product[numberofcategory - 1][0].Category << " of category.\n"
+			cout << PURPLE << "\n\t\t\t    You selected: " << product[numberofcategory - 1][0].Category << " of category.\n"
 				 << RESET;
-			cout << "*******************************************************************\n";
-			cout << "|                       PRODUCT LIST                               |\n";
-			cout << "*******************************************************************\n";
-			cout << "|  Number of product  |  Name  |  Code  |  Production Date  |  Expired Date  |  Price  |\n";
-			cout << endl;
-			cout << endl;
+
+			cout << "******************************************************************************************\n";
+			cout << "|                                      PRODUCT LIST                                     |\n";
+			cout << "******************************************************************************************\n";
+			cout << "|  No.  |        Name        |   Code    | Production Date | Expired Date  |   Price    |\n";
+			cout << "------------------------------------------------------------------------------------------\n";
+
 			for (int numberOfProductIndex = 0; numberOfProductIndex < NUMBEROFPRODUCT; numberOfProductIndex++)
 			{
 				if (!product[numberofcategory - 1][numberOfProductIndex].Code.empty())
 				{
-					cout << CYAN << "Number of product: " << numberOfProductIndex + 1 << " \t|";
-					cout << " Name: " << product[numberofcategory - 1][numberOfProductIndex].Name << "  \t|";
-					cout << " Code: " << product[numberofcategory - 1][numberOfProductIndex].Code << endl;
-
-					cout << " Production Date: " << product[numberofcategory - 1][numberOfProductIndex].ProductionDate.Day << "-"
-						 << product[numberofcategory - 1][numberOfProductIndex].ProductionDate.Month << "-"
-						 << product[numberofcategory - 1][numberOfProductIndex].ProductionDate.Year << " \t|";
-
-					cout << " Expired Date: " << product[numberofcategory - 1][numberOfProductIndex].ExpiredDate.Day << "-"
-						 << product[numberofcategory - 1][numberOfProductIndex].ExpiredDate.Month << "-"
-						 << product[numberofcategory - 1][numberOfProductIndex].ExpiredDate.Year << " \t|";
-
-					cout << " Price: " << product[numberofcategory - 1][numberOfProductIndex].Price << " EGP/Kg" << RESET << endl;
-					cout << "\t================================================================\n";
+					cout << CYAN;
+					cout << "|  " << setw(2) << numberOfProductIndex + 1 << "   | ";
+					cout << left << setw(18) << product[numberofcategory - 1][numberOfProductIndex].Name << " | ";
+					cout << setw(9) << product[numberofcategory - 1][numberOfProductIndex].Code << " |   ";
+					// Production Date
+					cout << right << setw(2) << setfill('0') << product[numberofcategory - 1][numberOfProductIndex].ProductionDate.Day << "-"
+						 << setw(2) << setfill('0') << product[numberofcategory - 1][numberOfProductIndex].ProductionDate.Month << "-"
+						 << setw(4) << setfill(' ') << product[numberofcategory - 1][numberOfProductIndex].ProductionDate.Year << "    |  ";
+					// Expired Date
+					cout << setw(2) << setfill('0') << product[numberofcategory - 1][numberOfProductIndex].ExpiredDate.Day << "-"
+						 << setw(2) << setfill('0') << product[numberofcategory - 1][numberOfProductIndex].ExpiredDate.Month << "-"
+						 << setw(4) << setfill(' ') << product[numberofcategory - 1][numberOfProductIndex].ExpiredDate.Year << "   | ";
+					// Price
+					cout << right << setw(6) << product[numberofcategory - 1][numberOfProductIndex].Price << " EGP |\n";
+					cout << RESET;
+					cout << "------------------------------------------------------------------------------------------\n";
 				}
 			}
+
 			int number;
 			char answerofproduct;
 			do
 			{
 				cout << YELLOW << "Please choose a product by entering a number between 1 and 10.\n"
 					 << RESET;
-				cout<<YELLOW<<"Enter 0 to return to categories\n"<<RESET;
+				cout << YELLOW << "Enter 0 to return to categories.\n"
+					 << RESET;
 				cin >> number;
+
 				if (number == 0)
-    {
-        cout << BLUE << "Returning to category menu...\n" << RESET;
-		returnToCategoryMenu=true;
-        break;
-    }
+				{
+					cout << BLUE << "Returning to category menu...\n"
+						 << RESET;
+					returnToCategoryMenu = true;
+					break;
+				}
+
 				if (!(number >= 1 && number <= 10))
 				{
-					cout << RED << "There is no choice like this" << RESET << endl;
+					cout << RED << "There is no choice like this.\n"
+						 << RESET;
 					answerofproduct = 'y';
 					continue;
 				}
@@ -117,8 +127,10 @@ void Categories(PRODUCT product[CATEGORY][NUMBEROFPRODUCT], const int CATEGORY, 
 				cout << GREEN << "Do you want to choose another product? (y/n)\n"
 					 << RESET;
 				cin >> answerofproduct;
+
 			} while (answerofproduct == 'y' || answerofproduct == 'Y');
 		}
+
 		else if (numberofcategory == 11)
 		{
 			return;
@@ -131,7 +143,7 @@ void Categories(PRODUCT product[CATEGORY][NUMBEROFPRODUCT], const int CATEGORY, 
 		}
 
 		if (returnToCategoryMenu)
-				continue; // skip the "Do you want to continue?" and go back to the top
+			continue; // skip the "Do you want to continue?" and go back to the top
 
 		cout << GREEN << "Do you want to continue? (y/n)" << RESET << endl;
 		cin >> choice;
