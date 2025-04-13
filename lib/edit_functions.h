@@ -71,16 +71,46 @@ bool editLocation(CUSTOMER &currentCustomer)
 bool editPassword(CUSTOMER &currentCustomer)
 {
     string newPassword, confirmPassword;
+    char ch;
     cout << BOLD << CYAN << "Enter the new password: " << RESET;
-    cin.ignore();
-    getline(cin, newPassword);
+    newPassword = "";
+
+    while ((ch = _getch()) != '\r')  // Enter to finish
+    {
+        if (ch == '\b' && !newPassword.empty())  // Backspace
+        {
+            newPassword.pop_back();
+            cout << "\b \b";
+        }
+        else if (ch != '\b')
+        {
+            newPassword += ch;
+            cout << '*';
+        }
+    }
+    cout << endl;
     if (newPassword.empty())
     {
         cout << RED << BOLD << "Error: " << RESET << "Password cannot be empty. Please enter a valid password." << endl;
         return false;
     }
     cout << BOLD << CYAN << "Retype the new password: " << RESET;
-    getline(cin, confirmPassword);
+    confirmPassword = "";
+
+    while ((ch = _getch()) != '\r')
+    {
+        if (ch == '\b' && !confirmPassword.empty())
+        {
+            confirmPassword.pop_back();
+            cout << "\b \b";
+        }
+        else if (ch != '\b')
+        {
+            confirmPassword += ch;
+            cout << '*';
+        }
+    }
+    cout << endl;
     if (newPassword != confirmPassword)
     {
         cout << RED << BOLD << "Error: " << RESET << "Passwords do not match. Please try again." << endl;
@@ -125,14 +155,27 @@ void displayInformation(const CUSTOMER &currentCustomer, int state)
 }
 
 // Main function to edit user information
-void editUserInformation(CUSTOMER currentCustomer)
+void editUserInformation(CUSTOMER customers[], int id, int numOfCustomers)
 {
     bool updated = false;
     bool continueEditing = true;
+    int index = -1;
+    
+    for (int i = 0; i < numOfCustomers; i++) {
+        if (customers[i].ID == id) {
+            index = i;
+            break;
+        }
+    }
+
+    if (index == -1) {
+        cout << RED << "Customer with ID " << id << " not found." << RESET << endl;
+        return;
+    }
 
     while (continueEditing)
     {
-        displayInformation(currentCustomer, 1);
+        displayInformation(customers[index], 1);
         int choice = displayMenu();
 
         cout << endl;
@@ -140,16 +183,16 @@ void editUserInformation(CUSTOMER currentCustomer)
         switch (choice)
         {
         case 1:
-            updated = editName(currentCustomer);
+            updated = editName(customers[index]);
             break;
         case 2:
-            updated = editPhoneNumber(currentCustomer);
+            updated = editPhoneNumber(customers[index]);
             break;
         case 3:
-            updated = editLocation(currentCustomer);
+            updated = editLocation(customers[index]);
             break;
         case 4:
-            updated = editPassword(currentCustomer);
+            updated = editPassword(customers[index]);
             break;
         case 5:
             cout << YELLOW << BOLD << "No changes have been made." << RESET << endl;
@@ -162,7 +205,7 @@ void editUserInformation(CUSTOMER currentCustomer)
 
         if (updated)
         {
-            displayInformation(currentCustomer, 2);
+            displayInformation(customers[index], 2);
             char editMore;
             do
             {

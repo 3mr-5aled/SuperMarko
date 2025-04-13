@@ -34,18 +34,18 @@ void read_product_from_file(PRODUCT product[CATEGORY][NUMBEROFPRODUCT],const int
 }
 
 
-void read_customer_from_file(CUSTOMER customers[], const int numerofcustomers,fstream &myfile){
-    
-	myfile.clear(); // clear any flags
-    myfile.seekg(0); // move to beginning of file
+void read_customer_from_file(CUSTOMER customers[], const int numOfCustomers, fstream &myfile) {
+    myfile.clear(); // clear any EOF flags
+    myfile.seekg(0); // rewind to beginning of file
 
-    for (int i = 0; i < numerofcustomers; i++) {
+    for (int i = 0; i < numOfCustomers; i++) {
         if (!(myfile >> customers[i].ID)) break;
-        myfile.ignore();
+        myfile.ignore(); // skip newline after ID
         getline(myfile, customers[i].Name);
         myfile >> customers[i].PhoneNumber;
         myfile.ignore();
         getline(myfile, customers[i].Location);
         myfile >> customers[i].Password;
+        myfile.ignore();
     }
 }

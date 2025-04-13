@@ -1,5 +1,6 @@
 #include <iostream>
 #include "struct.h"
+#include<conio.h>
 using namespace std;
 
 int loginUser(CUSTOMER customers[], const int numerofcustomers);
@@ -66,7 +67,7 @@ void registerUser(CUSTOMER customers[], const int numerofcustomers, fstream &myf
            << customers[index].Location << '\n'
            << customers[index].Password << '\n';
 
-    menu_logging_in(customers, numerofcustomers, myfile, id);
+    return;
 }
 
 int menu_logging_in(CUSTOMER customers[], const int numerofcustomers, fstream &myfile, int &id)
@@ -86,6 +87,7 @@ int menu_logging_in(CUSTOMER customers[], const int numerofcustomers, fstream &m
     else if (choice == 2)
     {
         id = loginUser(customers, numerofcustomers);
+    
         if (id == 0)
         {
             flag = 0;
@@ -100,7 +102,7 @@ int menu_logging_in(CUSTOMER customers[], const int numerofcustomers, fstream &m
     else
     {
         cout << RED << "Invalid choice" << RESET << endl;
-        menu_logging_in(customers, numerofcustomers, myfile, id);
+        flag=0;
     }
     return flag;
 }
@@ -116,8 +118,24 @@ int loginUser(CUSTOMER customers[], const int numerofcustomers)
         cout << CYAN << "Enter your username: " << RESET;
         getline(cin, username);
         cout << CYAN << "Enter your password: " << RESET;
-        getline(cin, password);
+        password = "";
+        char ch;
 
+        // Mask input
+        while ((ch = getch()) != '\r') // Enter key
+        {
+            if (ch == '\b' && !password.empty())
+            {
+                password.pop_back();
+                cout << "\b \b";
+            }
+            else if (ch != '\b')
+            {
+                password += ch;
+                cout << '*';
+            }
+        }
+        cout << endl;
         bool found = false;
         for (int i = 0; i < numerofcustomers; i++)
         {
