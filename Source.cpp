@@ -17,6 +17,11 @@ using namespace std;
 
 int main()
 {
+
+	// Set the console to UTF-8 encoding
+	// This is important for displaying non-ASCII characters correctly
+	// system("chcp 65001 > nul");
+
 	fstream myfile("customers.txt", ios::in | ios::out | ios::app);
 	if (!myfile.is_open())
 	{
