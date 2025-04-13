@@ -5,7 +5,7 @@
 #include <string>
 using namespace std;
 
-// Define the structures
+// Define the constants
 const int numOfProducts = 10;
 const int numOfCategories = 10;
 const int numOfOrders = 20;
