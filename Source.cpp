@@ -76,6 +76,7 @@ Welcome to the Grocery Store Management System
 		editUserInformation(getCustomerbyID(id,customers,numOfCustomers));
         break;
 	case '2':
+
 		cout << "\nYou selected: View product menu\n";
 		cout << "###################################################################################################################\n";
 		Categories(product,numOfCategories,numOfProducts);
@@ -120,7 +121,7 @@ Welcome to the Grocery Store Management System
 
 	cin >> choice;
 
-    } while (choice=='y'||choice=='Y');
+      } while (choice=='y'||choice=='Y');
 
    
 	myfile.close();
