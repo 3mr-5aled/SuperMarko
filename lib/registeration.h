@@ -74,6 +74,12 @@ int menu_logging_in(CUSTOMER customers[], const int numerofcustomers,fstream &my
     else if (choice == 2)
     {
         id =loginUser(customers,numerofcustomers);
+        if (id ==0)
+        {
+            flag =0;
+            cout << "LOGIN FAILED !....." << endl;
+        }
+        
     }
     else if (choice == 3){
         cout << "EXITING PROGRAM ..." << endl;
@@ -123,7 +129,7 @@ int loginUser(CUSTOMER customers[], const int numerofcustomers)
             if (attempts > 0)
                 cout << "You have " << attempts << " attempt(s) left.\n";
             else {
-                cout << "\nNo attempts left. Logging out...\n";
+                cout << "\nNo attempts left.\n";
                 return 0;
             }
         }
