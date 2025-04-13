@@ -15,22 +15,20 @@
 
 using namespace std;
 
-
-
 int main()
 {
 	fstream myfile("customers.txt", ios::in | ios::out | ios::app);
-    if (!myfile.is_open()) {
-        cout << "Error opening the file.\n";
-        return 1;
-    }
+	if (!myfile.is_open())
+	{
+		cout << "Error opening the file.\n";
+		return 1;
+	}
 	int id = 1;
 
+	read_product_from_file(product, numOfCategories, numOfProducts);
+	read_customer_from_file(customers, numOfCustomers, myfile);
 
-    read_product_from_file(product,numOfCategories,numOfProducts);
-    read_customer_from_file(customers,numOfCustomers,myfile);
-
-    cout << R"(
+	cout << R"(
 
 ⠀⠀⠈⠛⠻⠶⣶⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠈⢻⣆⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⠀⠀⠀
@@ -54,19 +52,19 @@ Welcome to the Grocery Store Management System
                                                                  made by: real developers                                         
 
             )"
-         << endl;
+		 << endl;
 
-    
-    int flag=menu_logging_in(customers, numOfCustomers,myfile,id);
+	int flag = menu_logging_in(customers, numOfCustomers, myfile, id);
 
 	char number;
 	char choice;
-	
+
 	if (!flag)
 	{
 		return 0;
 	}
-	do{
+	do
+	{
 		number = bigmenu();
 	switch (number)
 	{
@@ -76,54 +74,52 @@ Welcome to the Grocery Store Management System
 		editUserInformation(getCustomerbyID(id,customers,numOfCustomers));
         break;
 	case '2':
-
 		cout << "\nYou selected: View product menu\n";
 		cout << "###################################################################################################################\n";
 		Categories(product,numOfCategories,numOfProducts);
 		break;
 
-	case '3':
-		cout << "\nYou selected: Add goods\n";
-		cout << "###################################################################################################################\n";
+		case '3':
+			cout << "\nYou selected: Add goods\n";
+			cout << "###################################################################################################################\n";
 
-		break;
-	case '4':
-		cout << "\nYou selected: Review your order\n";
-		cout << "###################################################################################################################\n";
+			break;
+		case '4':
+			cout << "\nYou selected: Review your order\n";
+			cout << "###################################################################################################################\n";
 
-		break;
-	case '5':
-		cout << "\nYou selected: Modify your order\n";
-		cout << "###################################################################################################################\n";
+			break;
+		case '5':
+			cout << "\nYou selected: Modify your order\n";
+			cout << "###################################################################################################################\n";
 
-		break;
-	case '6':
-		cout << "\nYou selected: View total price\n";
-		cout << "###################################################################################################################\n";
-		break;
-	case '7':
-		cout << "\nLogging out...\n";
-		cout << "###################################################################################################################\n";
-		flag = menu_logging_in(customers, numOfCustomers,myfile,id);
-		if (!flag)
-			return 0;
-		
-		choice ='y';
-		continue;
-	default:
-		cout << "\nInvalid input, please enter a number between 1 and 7.\n";
-		cout << "###################################################################################################################\n";
-		choice = 'y';
-		continue;
+			break;
+		case '6':
+			cout << "\nYou selected: View total price\n";
+			cout << "###################################################################################################################\n";
+			break;
+		case '7':
+			cout << "\nLogging out...\n";
+			cout << "###################################################################################################################\n";
+			flag = menu_logging_in(customers, numOfCustomers, myfile, id);
+			if (!flag)
+				return 0;
 
-	}
-	cout << "Do you want anoter operation?";
+			choice = 'y';
+			continue;
+		default:
+			cout << "\nInvalid input, please enter a number between 1 and 7.\n";
+			cout << "###################################################################################################################\n";
+			choice = 'y';
+			continue;
+		}
+		cout << "Do you want anoter operation?";
 
-	cin >> choice;
+		cin >> choice;
 
-      } while (choice=='y'||choice=='Y');
+    } while (choice=='y'||choice=='Y');
 
    
 	myfile.close();
-    return 0;
+	return 0;
 }
