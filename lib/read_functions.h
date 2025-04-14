@@ -1,11 +1,10 @@
 #include <iostream>
-#include<fstream>
+#include <fstream>
 #include <string>
 #include "struct.h"
 using namespace std;
 
-
-void read_product_from_file(PRODUCT product[CATEGORY][NUMBEROFPRODUCT],const int CATEGORY,const int NUMBEROFPRODUCT)
+void read_product_from_file(PRODUCT product[CATEGORY][NUMBEROFPRODUCT], const int CATEGORY, const int NUMBEROFPRODUCT)
 {
 	fstream myfile;
 	myfile.open("productmenu.txt", ios::in);
@@ -33,19 +32,21 @@ void read_product_from_file(PRODUCT product[CATEGORY][NUMBEROFPRODUCT],const int
 	myfile.close();
 }
 
+void read_customer_from_file(CUSTOMER customers[], const int numOfCustomers, fstream &myfile)
+{
+	myfile.clear();	 // clear any EOF flags
+	myfile.seekg(0); // rewind to beginning of file
 
-void read_customer_from_file(CUSTOMER customers[], const int numOfCustomers, fstream &myfile) {
-    myfile.clear(); // clear any EOF flags
-    myfile.seekg(0); // rewind to beginning of file
-
-    for (int i = 0; i < numOfCustomers; i++) {
-        if (!(myfile >> customers[i].ID)) break;
-        myfile.ignore(); // skip newline after ID
-        getline(myfile, customers[i].Name);
-        myfile >> customers[i].PhoneNumber;
-        myfile.ignore();
-        getline(myfile, customers[i].Location);
-        myfile >> customers[i].Password;
-        myfile.ignore();
-    }
+	for (int i = 0; i < numOfCustomers; i++)
+	{
+		if (!(myfile >> customers[i].ID))
+			break;
+		myfile.ignore(); // skip newline after ID
+		getline(myfile, customers[i].Name);
+		myfile >> customers[i].PhoneNumber;
+		myfile.ignore();
+		getline(myfile, customers[i].Location);
+		myfile >> customers[i].Password;
+		myfile.ignore();
+	}
 }

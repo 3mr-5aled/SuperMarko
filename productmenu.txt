@@ -220,7 +220,7 @@ Dairy&Eggs
 2025
 41.18
 DE#7009
-White_Cheese("Thalaga")
+White_Cheese_Thalaga
 Dairy&Eggs
 17
 3
@@ -230,7 +230,7 @@ Dairy&Eggs
 2025
 130
 DE#7010
-Baeamili_Kariibi_White_Cheese
+Braeamili_Cheese
 Dairy&Eggs
 23
 4

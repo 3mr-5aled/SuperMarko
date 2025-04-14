@@ -8,6 +8,7 @@
 #include "lib/addtional_features.h"
 #include "lib/read_functions.h"
 #include "lib/get_functions.h"
+#include "lib/save_functions.h"
 
 using namespace std;
 
@@ -49,7 +50,8 @@ int main()
 
 		Welcome to the Grocery Store Management System
 		)" << RESET;
-		cout << BOLD << TEAL << R"(███████╗██╗   ██╗██████╗ ███████╗██████╗     ███╗   ███╗ █████╗ ██████╗ ██╗  ██╗ ██████╗ 
+		cout << BOLD << TEAL <<
+			R"(███████╗██╗   ██╗██████╗ ███████╗██████╗     ███╗   ███╗ █████╗ ██████╗ ██╗  ██╗ ██████╗ 
 		██╔════╝██║   ██║██╔══██╗██╔════╝██╔══██╗    ████╗ ████║██╔══██╗██╔══██╗██║ ██╔╝██╔═══██╗   
 		███████╗██║   ██║██████╔╝█████╗  ██████╔╝    ██╔████╔██║███████║██████╔╝█████╔╝ ██║   ██║
 		╚════██║██║   ██║██╔═══╝ ██╔══╝  ██╔══██╗    ██║╚██╔╝██║██╔══██║██╔══██╗██╔═██╗ ██║   ██║
@@ -151,25 +153,7 @@ int main()
 
 	myfile.close(); // Close read file
 
-	ofstream outFile("customers.txt", ios::out | ios::trunc);
-	if (!outFile.is_open())
-	{
-		cout << RED << "Error: Could not write to customers.txt" << RESET << endl;
-		return 1;
-	}
-
-	for (int i = 0; i < numOfCustomers; i++)
-	{
-		if (customers[i].ID == 0)
-			continue;
-		outFile << customers[i].ID << '\n';
-		outFile << customers[i].Name << '\n';
-		outFile << customers[i].PhoneNumber << '\n';
-		outFile << customers[i].Location << '\n';
-		outFile << customers[i].Password << '\n';
-	}
-
-	outFile.close();
+	save_customers(customers);
 
 	return 0;
 }
