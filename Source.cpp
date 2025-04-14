@@ -15,7 +15,7 @@ int main()
 {
 	// Set the console to UTF-8 encoding
 	// This is important for displaying Unicode characters correctly
-	system("chcp 65001 > nul");
+	// system("chcp 65001 > nul");
 
 	fstream myfile("customers.txt", ios::in | ios::out);
 	if (!myfile.is_open())
