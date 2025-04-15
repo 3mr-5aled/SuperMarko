@@ -22,11 +22,15 @@ int displayMenu()
         if (choice.length() == 1 && isdigit(choice[0]))
         {
             digitchoice = choice[0] - '0';
-            break;
+            if (digitchoice >= 0 && digitchoice <= 4)
+                break;
+            else
+                cout << RED << "Invalid choice. Please enter a number between 0 and 4.\n"
+                     << RESET;
         }
         else
-            cout << "invalid choice " << endl;
-        continue;
+            cout << RED << "Invalid choice. Please enter a number from the menu.\n"
+                 << RESET;
     }
     return digitchoice;
 }
@@ -34,49 +38,74 @@ int displayMenu()
 // Edit name
 bool editName(CUSTOMER &currentCustomer)
 {
-    cout << BOLD << BLUE << "Current Name: " << RESET << currentCustomer.Name << endl;
-    cout << endl;
-    cout << BOLD << CYAN << "Enter the new name: " << RESET;
-    cin.ignore();
-    getline(cin, currentCustomer.Name);
-    if (currentCustomer.Name.empty())
+    string input;
+    while (true)
     {
-        cout << RED << BOLD << "Error: " << RESET << "Name cannot be empty. Please enter a valid name." << endl;
-        return false;
+        cout << BOLD << BLUE << "Current Name: " << RESET << currentCustomer.Name << endl;
+        cout << endl;
+        cout << BOLD << CYAN << "Enter the new name: " << RESET;
+        cin.ignore();
+        getline(cin, input);
+
+        if (input.empty() || input.find_first_not_of(' ') == string::npos)
+        {
+            cout << RED << BOLD << "Error: " << RESET << "Name cannot be empty. Please enter a valid name." << endl;
+        }
+        else
+        {
+            currentCustomer.Name = input;
+            return true;
+        }
     }
-    return true;
 }
 
 // Edit phone number
 bool editPhoneNumber(CUSTOMER &currentCustomer)
 {
+    string input;
     cout << BOLD << BLUE << "Current Phone Number: " << RESET << currentCustomer.PhoneNumber << endl;
     cout << endl;
-    cout << BOLD << CYAN << "Enter the new phone number: " << RESET;
-    cin.ignore();
-    getline(cin, currentCustomer.PhoneNumber);
-    if (currentCustomer.PhoneNumber.empty() || currentCustomer.PhoneNumber.length() != 11 || currentCustomer.PhoneNumber.find_first_not_of("0123456789") != string::npos)
+
+    while (true)
     {
-        cout << RED << BOLD << "Error: " << RESET << "Phone number must be 11 digits long and contain only numbers. Please enter a valid phone number." << endl;
-        return false;
+        cout << BOLD << CYAN << "Enter the new phone number: " << RESET;
+        getline(cin, input);
+
+        if (input.empty() || input.length() != 11 || input.find_first_not_of("0123456789") != string::npos)
+        {
+            cout << RED << BOLD << "Error: " << RESET << "Phone number must be 11 digits long and contain only numbers." << endl;
+            continue;
+        }
+        else
+        {
+            currentCustomer.PhoneNumber = input;
+            return true;
+        }
     }
-    return true;
 }
 
 // Edit location
 bool editLocation(CUSTOMER &currentCustomer)
 {
-    cout << BOLD << BLUE << "Current Location: " << RESET << currentCustomer.Location << endl;
-    cout << endl;
-    cout << BOLD << CYAN << "Enter the new location: " << RESET;
-    cin.ignore();
-    getline(cin, currentCustomer.Location);
-    if (currentCustomer.Location.empty())
+    string input;
+    while (true)
     {
-        cout << RED << BOLD << "Error: " << RESET << "Location cannot be empty. Please enter a valid location." << endl;
-        return false;
+        cout << BOLD << BLUE << "Current Location: " << RESET << currentCustomer.Location << endl;
+        cout << endl;
+        cout << BOLD << CYAN << "Enter the new location: " << RESET;
+        cin.ignore();
+        getline(cin, input);
+
+        if (input.empty() || input.find_first_not_of(' ') == string::npos)
+        {
+            cout << RED << BOLD << "Error: " << RESET << "Location cannot be empty." << endl;
+        }
+        else
+        {
+            currentCustomer.Location = input;
+            return true;
+        }
     }
-    return true;
 }
 
 // Edit password

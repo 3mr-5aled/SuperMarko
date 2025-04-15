@@ -140,14 +140,28 @@ int main()
 			}
 			if (loggedIn)
 			{
-				cout << YELLOW << "Do you want another operation? (y/n): " << RESET;
-				cin >> choice;
-				if (choice != 'y' && choice != 'Y')
+				while (true)
 				{
-					loggedIn = false;
-					id = 0;
+					cout << YELLOW << "Do you want another operation? (y/n): " << RESET;
+					cin >> choice;
+
+					if (choice == 'y' || choice == 'Y')
+					{
+						// valid, continue with operations
+						break;
+					}
+					else if (choice == 'n' || choice == 'N')
+					{
+						loggedIn = false;
+						id = 0;
+						break;
+					}
+					else
+					{
+						cout << RED << "Invalid choice! Please enter 'y' or 'n'." << RESET << endl;
+					}
 				}
-			}
+						}
 		}
 	}
 
