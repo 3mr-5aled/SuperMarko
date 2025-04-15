@@ -6,17 +6,29 @@ using namespace std;
 // Display menu to edit user information
 int displayMenu()
 {
-    int choice;
-    cout << BOLD << UNDERLINE << CYAN << "What do you want to edit?" << RESET << endl;
-    cout << BOLD << "1. " << GREEN << "Name" << RESET << endl;
-    cout << BOLD << "2. " << GREEN << "Phone Number" << RESET << endl;
-    cout << BOLD << "3. " << GREEN << "Location" << RESET << endl;
-    cout << BOLD << "4. " << GREEN << "Password" << RESET << endl;
-    cout << BOLD << "0. " << RED << "Cancel" << RESET << endl;
-    cout << endl;
-    cout << BOLD << YELLOW << "Enter your choice: " << RESET;
-    cin >> choice;
-    return choice;
+    string choice;
+    int digitchoice;
+    while (true)
+    {
+        cout << BOLD << UNDERLINE << CYAN << "What do you want to edit?" << RESET << endl;
+        cout << BOLD << "1. " << GREEN << "Name" << RESET << endl;
+        cout << BOLD << "2. " << GREEN << "Phone Number" << RESET << endl;
+        cout << BOLD << "3. " << GREEN << "Location" << RESET << endl;
+        cout << BOLD << "4. " << GREEN << "Password" << RESET << endl;
+        cout << BOLD << "0. " << RED << "Cancel" << RESET << endl;
+        cout << endl;
+        cout << BOLD << YELLOW << "Enter your choice: " << RESET;
+        cin >> choice;
+        if (choice.length() == 1 && isdigit(choice[0]))
+        {
+            digitchoice = choice[0] - '0';
+            break;
+        }
+        else
+            cout << "invalid choice " << endl;
+        continue;
+    }
+    return digitchoice;
 }
 
 // Edit name

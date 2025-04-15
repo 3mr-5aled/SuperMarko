@@ -69,7 +69,7 @@ int main()
 			break;
 		}
 
-		char number;
+		int number;
 		char choice;
 		bool loggedIn = true;
 
@@ -78,7 +78,7 @@ int main()
 			number = bigmenu();
 			switch (number)
 			{
-			case '1':
+			case 1:
 				cout << CYAN << "\nYou selected: Edit your information\n"
 					 << RESET;
 				cout << "═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════\n";
@@ -86,7 +86,7 @@ int main()
 				editUserInformation(customers, id, numOfCustomers);
 				choice = 'y';
 				continue;
-			case '2':
+			case 2:
 				cout << CYAN << "\nYou selected: View product menu\n"
 					 << RESET;
 				cout << "═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════\n";
@@ -95,34 +95,34 @@ int main()
 				choice = 'y';
 				continue;
 
-			case '3':
+			case 3:
 				cout << CYAN << "\nYou selected: Add goods\n"
 					 << RESET;
 				cout << "═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════\n";
 				cout << endl;
 
 				break;
-			case '4':
+			case 4:
 				cout << CYAN << "\nYou selected: Review your order\n"
 					 << RESET;
 				cout << "═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════\n";
 				cout << endl;
 
 				break;
-			case '5':
+			case 5:
 				cout << CYAN << "\nYou selected: Modify your order\n"
 					 << RESET;
 				cout << "═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════\n";
 				cout << endl;
 
 				break;
-			case '6':
+			case 6:
 				cout << CYAN << "\nYou selected: View total price\n"
 					 << RESET;
 				cout << "═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════\n";
 				cout << endl;
 				break;
-			case '0':
+			case 0:
 				cout << RED << "\nLogging out...\n"
 					 << RESET;
 				cout << "═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════\n";

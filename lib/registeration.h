@@ -72,38 +72,63 @@ void registerUser(CUSTOMER customers[], const int numerofcustomers, fstream &myf
 
 int menu_logging_in(CUSTOMER customers[], const int numerofcustomers, fstream &myfile, int &id)
 {
-    int choice, flag = 1;
-    cout << YELLOW << "Do you want to register or login?" << RESET << endl;
-    cout << BLUE << "1. Register" << RESET << endl;
-    cout << BLUE << "2. Login" << RESET << endl;
-    cout << BLUE << "0. Exit The Program" << RESET << endl;
-    cout << CYAN << "Enter your choice: " << RESET;
-    cin >> choice;
+    int flag = 1;
+    string input;
+    int choice;
 
-    if (choice == 1)
+    while (true)
     {
-        registerUser(customers, numerofcustomers, myfile, id);
-    }
-    else if (choice == 2)
-    {
-        id = loginUser(customers, numerofcustomers);
+        cout << YELLOW << "Do you want to register or login?" << RESET << endl;
+        cout << BLUE << "1. Register" << RESET << endl;
+        cout << BLUE << "2. Login" << RESET << endl;
+        cout << BLUE << "0. Exit The Program" << RESET << endl;
+        cout << CYAN << "Enter your choice: " << RESET;
 
-        if (id == 0)
+        cin >> input;
+
+        // Check if the input is a number
+        if (input.length() == 1 && isdigit(input[0]))
         {
+            choice = input[0] - '0'; // convert char to int
+        }
+        else
+        {
+            cout << RED << "Invalid input. Please enter a number (0, 1, or 2).\n"
+                 << RESET;
+            continue;
+        }
+
+        if (choice == 1)
+        {
+            registerUser(customers, numerofcustomers, myfile, id);
+            flag = 1;
+            break;
+        }
+        else if (choice == 2)
+        {
+            id = loginUser(customers, numerofcustomers);
+            if (id == 0)
+            {
+                cout << RED << "LOGIN FAILED!....." << RESET << endl;
+                flag = 0;
+                break;
+            }
+            flag = 1;
+            break;
+        }
+        else if (choice == 0)
+        {
+            cout << GREEN << "EXITING PROGRAM ..." << RESET << endl;
             flag = 0;
-            cout << RED << "LOGIN FAILED!....." << RESET << endl;
+            break;
+        }
+        else
+        {
+            cout << RED << "Invalid choice. Please enter 0, 1, or 2.\n"
+                 << RESET;
         }
     }
-    else if (choice == 0)
-    {
-        cout << GREEN << "EXITING PROGRAM ..." << RESET << endl;
-        flag = 0;
-    }
-    else
-    {
-        cout << RED << "Invalid choice" << RESET << endl;
-        flag = 0;
-    }
+
     return flag;
 }
 
