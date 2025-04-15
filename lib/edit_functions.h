@@ -84,50 +84,66 @@ bool editPassword(CUSTOMER &currentCustomer)
 {
     string newPassword, confirmPassword;
     char ch;
-    cout << BOLD << CYAN << "Enter the new password: " << RESET;
-    newPassword = "";
 
-    while ((ch = _getch()) != '\r') // Enter to finish
+    while (true) // Loop until valid password is set
     {
-        if (ch == '\b' && !newPassword.empty()) // Backspace
-        {
-            newPassword.pop_back();
-            cout << "\b \b";
-        }
-        else if (ch != '\b')
-        {
-            newPassword += ch;
-            cout << '*';
-        }
-    }
-    cout << endl;
-    if (newPassword.empty())
-    {
-        cout << RED << BOLD << "Error: " << RESET << "Password cannot be empty. Please enter a valid password." << endl;
-        return false;
-    }
-    cout << BOLD << CYAN << "Retype the new password: " << RESET;
-    confirmPassword = "";
+        newPassword = "";
+        cout << BOLD << CYAN << "Enter the new password: " << RESET;
 
-    while ((ch = _getch()) != '\r')
-    {
-        if (ch == '\b' && !confirmPassword.empty())
+        while ((ch = _getch()) != '\r') // Enter to finish
         {
-            confirmPassword.pop_back();
-            cout << "\b \b";
+            if (ch == '\b' && !newPassword.empty())
+            {
+                newPassword.pop_back();
+                cout << "\b \b";
+            }
+            else if (ch != '\b')
+            {
+                newPassword += ch;
+                cout << '*';
+            }
         }
-        else if (ch != '\b')
+        cout << endl;
+
+        if (newPassword.empty())
         {
-            confirmPassword += ch;
-            cout << '*';
+            cout << RED << BOLD << "Error: " << RESET << "Password cannot be empty.\n";
+            continue;
         }
+
+        if (newPassword.length() < 8)
+        {
+            cout << RED << BOLD << "Error: " << RESET << "Password must be at least 8 characters long.\n";
+            continue;
+        }
+
+        confirmPassword = "";
+        cout << BOLD << CYAN << "Retype the new password: " << RESET;
+
+        while ((ch = _getch()) != '\r')
+        {
+            if (ch == '\b' && !confirmPassword.empty())
+            {
+                confirmPassword.pop_back();
+                cout << "\b \b";
+            }
+            else if (ch != '\b')
+            {
+                confirmPassword += ch;
+                cout << '*';
+            }
+        }
+        cout << endl;
+
+        if (newPassword != confirmPassword)
+        {
+            cout << RED << BOLD << "Error: " << RESET << "Passwords do not match.\n";
+            continue;
+        }
+
+        break; // Success
     }
-    cout << endl;
-    if (newPassword != confirmPassword)
-    {
-        cout << RED << BOLD << "Error: " << RESET << "Passwords do not match. Please try again." << endl;
-        return false;
-    }
+
     currentCustomer.Password = newPassword;
     return true;
 }
