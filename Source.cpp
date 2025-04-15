@@ -84,7 +84,7 @@ int main()
 				cout << "═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════\n";
 				cout << endl;
 				editUserInformation(customers, id, numOfCustomers);
-				choice = 'y';
+				// choice = 'y';
 				continue;
 			case 2:
 				cout << CYAN << "\nYou selected: View product menu\n"
@@ -161,7 +161,7 @@ int main()
 						cout << RED << "Invalid choice! Please enter 'y' or 'n'." << RESET << endl;
 					}
 				}
-						}
+			}
 		}
 	}
 

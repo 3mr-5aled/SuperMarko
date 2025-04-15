@@ -65,7 +65,7 @@ bool editPhoneNumber(CUSTOMER &currentCustomer)
     string input;
     cout << BOLD << BLUE << "Current Phone Number: " << RESET << currentCustomer.PhoneNumber << endl;
     cout << endl;
-
+    cin.ignore();
     while (true)
     {
         cout << BOLD << CYAN << "Enter the new phone number: " << RESET;
@@ -134,7 +134,7 @@ bool editPassword(CUSTOMER &currentCustomer)
         }
         cout << endl;
 
-        if (newPassword.empty())
+        if (newPassword.empty() || newPassword.find_first_not_of(' ') == string::npos)
         {
             cout << RED << BOLD << "Error: " << RESET << "Password cannot be empty.\n";
             continue;
