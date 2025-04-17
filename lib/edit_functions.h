@@ -134,9 +134,15 @@ bool editPassword(CUSTOMER &currentCustomer)
         }
         cout << endl;
 
-        if (newPassword.empty() || newPassword.find_first_not_of(' ') == string::npos)
+        if (newPassword.empty())
         {
             cout << RED << BOLD << "Error: " << RESET << "Password cannot be empty.\n";
+            continue;
+        }
+
+        if (newPassword.find(' ') != string::npos)
+        {
+            cout << RED << BOLD << "Error: " << RESET << "Password cannot contain spaces.\n";
             continue;
         }
 
