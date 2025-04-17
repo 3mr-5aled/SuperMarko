@@ -9,9 +9,9 @@ int menu_logging_in(CUSTOMER customers[], const int numerofcustomers, fstream &m
 
 void registerUser(CUSTOMER customers[], const int numerofcustomers, fstream &myfile, int &id)
 {
-    bool found = false, validPassword = false;
+    bool found = false, validPassword = false, validName = false, validPhone = false, validLocation = false;
     int index = 0;
-
+    string name, password, phone, location;
     for (int i = 0; i < numerofcustomers; i++)
     {
         if (!customers[i].ID)
@@ -30,15 +30,59 @@ void registerUser(CUSTOMER customers[], const int numerofcustomers, fstream &myf
     }
 
     customers[index].ID = index + 1;
-    cout << CYAN << "Enter your username: " << RESET;
+
     cin.ignore();
-    getline(cin, customers[index].Name);
+
+    while (!validName)
+    {
+        cout << CYAN << "Enter your username: " << RESET;
+        cin.clear();
+
+        getline(cin, name);
+
+        // Check if username is empty or contains only spaces
+        if (name.empty() || name.find_first_not_of(' ') == string::npos)
+        {
+            cout << RED << "Username cannot be empty!\n"
+                 << RESET;
+            continue;
+        }
+
+        // Check if username already exists in any customer record
+        bool usernameExists = false;
+        for (int i = 0; i < numerofcustomers; i++)
+        {
+            // Check against all existing users, regardless of their ID
+            if (!customers[i].Name.empty() && customers[i].ID != 0)
+            {
+                if (customers[i].Name == name)
+                {
+                    cout << RED << "Username already exists! Please choose another one.\n"
+                         << RESET;
+                    usernameExists = true;
+                    break;
+                }
+            }
+        }
+
+        if (!usernameExists)
+        {
+            validName = true;
+            customers[index].Name = name;
+        }
+    }
 
     while (!validPassword)
     {
         cout << CYAN << "Enter your password: " << RESET;
-        cin >> customers[index].Password;
-        if (customers[index].Password.size() < 8)
+        cin.clear();
+        cin >> password;
+        if (password.empty() || password.find(' ') != string::npos)
+        {
+            cout << RED << "Password cannot contain spaces!\n"
+                 << RESET;
+        }
+        else if (password.size() < 8)
         {
             cout << RED << "Password too short!\n"
                  << RESET;
@@ -46,14 +90,53 @@ void registerUser(CUSTOMER customers[], const int numerofcustomers, fstream &myf
         else
         {
             validPassword = true;
+            customers[index].Password = password;
         }
     }
 
-    cout << CYAN << "Enter your phone number: " << RESET;
-    cin >> customers[index].PhoneNumber;
+    while (!validPhone)
+    {
+        cout << CYAN << "Enter your phone number: " << RESET;
+        cin.clear();
+        cin >> phone;
+
+        // Check if phone number is empty or contains only spaces
+        if (phone.empty() || phone.find(' ') != string::npos)
+        {
+            cout << RED << "Phone number cannot be empty!\n"
+                 << RESET;
+            continue;
+        }
+
+        // Check if phone number is exactly 11 digits and contains only numbers
+        if (phone.length() != 11 || phone.find_first_not_of("0123456789") != string::npos)
+        {
+            cout << RED << "Phone number must be 11 digits long and contain only numbers.\n"
+                 << RESET;
+            continue;
+        }
+        else
+        {
+            validPhone = true;
+            customers[index].PhoneNumber = phone;
+        }
+    }
     cin.ignore();
-    cout << CYAN << "Enter your location: " << RESET;
-    getline(cin, customers[index].Location);
+    while (!validLocation)
+    {
+        cout << CYAN << "Enter your location: " << RESET;
+        getline(cin, location);
+        if (location.empty() || location.find_first_not_of(' ') == string::npos)
+        {
+            cout << RED << "Location cannot be empty!\n"
+                 << RESET;
+        }
+        else
+        {
+            validLocation = true;
+            customers[index].Location = location;
+        }
+    }
 
     cout << GREEN << "Registration successful!\n"
          << RESET;
