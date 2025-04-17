@@ -1,4 +1,4 @@
-# 🛒 Supermarko
+# 🛒 Supermarko CLI
 
 ## 📝 Overview
 
