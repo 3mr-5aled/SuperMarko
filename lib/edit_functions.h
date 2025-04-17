@@ -132,6 +132,7 @@ bool editPassword(CUSTOMER &currentCustomer)
                 cout << '*';
             }
         }
+
         cout << endl;
 
         if (newPassword.empty() || newPassword.find_first_not_of(' ') == string::npos)
@@ -145,7 +146,7 @@ bool editPassword(CUSTOMER &currentCustomer)
             cout << RED << BOLD << "Error: " << RESET << "Password must be at least 8 characters long.\n";
             continue;
         }
-
+        
         confirmPassword = "";
         cout << BOLD << CYAN << "Retype the new password: " << RESET;
 
