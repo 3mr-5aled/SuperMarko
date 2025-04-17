@@ -71,12 +71,11 @@ void registerUser(CUSTOMER customers[], const int numerofcustomers, fstream &myf
             customers[index].Name = name;
         }
     }
-
     while (!validPassword)
     {
         cout << CYAN << "Enter your password: " << RESET;
         cin.clear();
-        cin >> password;
+        getline(cin, password);
         if (password.empty() || password.find(' ') != string::npos)
         {
             cout << RED << "Password cannot contain spaces!\n"
@@ -137,7 +136,7 @@ void registerUser(CUSTOMER customers[], const int numerofcustomers, fstream &myf
             customers[index].Location = location;
         }
     }
-
+    id = index + 1;
     cout << GREEN << "Registration successful!\n"
          << RESET;
 
