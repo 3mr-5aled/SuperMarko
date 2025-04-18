@@ -6,6 +6,9 @@ using namespace std;
 
 void read_product_from_file(PRODUCT product[CATEGORY][NUMBEROFPRODUCT], const int CATEGORY, const int NUMBEROFPRODUCT)
 {
+	
+	
+	
 	fstream myfile;
 	myfile.open("productmenu.txt", ios::in);
 	if (!myfile)
