@@ -47,7 +47,7 @@ struct ORDER
     int CustomerID;
     PRODUCT Products[20];
     double TotalPrice;
-};
+}order [numOfCustomers];
 
 // ANSI escape codes for styling terminal output
 const string RESET = "\033[0m";

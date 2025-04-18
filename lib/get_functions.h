@@ -1,4 +1,6 @@
-#include <iostream>
+ #include <iostream>
+
+ 
 #include "struct.h"
 using namespace std;
 
