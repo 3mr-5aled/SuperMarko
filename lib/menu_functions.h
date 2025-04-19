@@ -7,7 +7,7 @@ using namespace std;
 
 const int CATEGORY = 10;
 const int NUMBEROFPRODUCT = 10;
-
+void addProducts (ORDER order[numOfCustomers],PRODUCT product[numOfCategories][numOfProducts],int& id,int CategoryCase,bool& returnToCategoryMenu );
 int bigmenu()
 {
 	string input;
@@ -53,11 +53,12 @@ int bigmenu()
 	return number;
 }
 
-void Categories(PRODUCT product[CATEGORY][NUMBEROFPRODUCT], const int CATEGORY, const int NUMBEROFPRODUCT)
+void Categories(PRODUCT product[CATEGORY][NUMBEROFPRODUCT],int &id, const int NUMBEROFPRODUCT,ORDER order[numOfCustomers])
 {
 	int numberofcategory;
 	char choice;
 	string input;
+	int CategoryCases;
 	while (true)
 	{
 		bool returnToCategoryMenu = false;
@@ -84,10 +85,12 @@ void Categories(PRODUCT product[CATEGORY][NUMBEROFPRODUCT], const int CATEGORY, 
 		if ((input.length() == 1 && isdigit(input[0])))
 		{
 			numberofcategory = input[0] - '0';
+			CategoryCases=numberofcategory;
 		}
 		else if (input == "10")
 		{
 			numberofcategory = 10;
+			CategoryCases=numberofcategory;
 		}
 		else
 		{
@@ -126,101 +129,174 @@ void Categories(PRODUCT product[CATEGORY][NUMBEROFPRODUCT], const int CATEGORY, 
 					cout << "------------------------------------------------------------------------------------------\n";
 				}
 			}
+			addProducts ( order, product, id, CategoryCases, returnToCategoryMenu );
+			// int number;
+			// string productInput;
+			// char answerofproduct;
+			// do
+			// {
+			// 	cout << YELLOW << "Please choose a product by entering a number between 1 and 10.\n"
+			// 		 << RESET;
+			// 	cout << YELLOW << "Enter 0 to return to categories.\n"
+			// 		 << RESET;
+			// 	cin >> productInput;
 
-// 			int number;
-// 			string productInput;
-// 			char answerofproduct;
-// 			do
-// 			{
-// 				cout << YELLOW << "Please choose a product by entering a number between 1 and 10.\n"
-// 					 << RESET;
-// 				cout << YELLOW << "Enter 0 to return to categories.\n"
-// 					 << RESET;
-// 				cin >> productInput;
+			// 	if ((productInput.length() == 1 && isdigit(productInput[0])))
+			// 	{
+			// 		number = productInput[0] - '0';
+			// 	}
+			// 	else if (productInput == "10")
+			// 	{
+			// 		number = 10;
+			// 	}
+			// 	else
+			// 	{
+			// 		cout << RED << "Invalid input. Please enter a valid number.\n"
+			// 			 << RESET;
+			// 		continue;
+			// 	}
 
-// 				if ((productInput.length() == 1 && isdigit(productInput[0])))
-// 				{
-// 					number = productInput[0] - '0';
-// 				}
-// 				else if (productInput == "10")
-// 				{
-// 					number = 10;
-// 				}
-// 				else
-// 				{
-// 					cout << RED << "Invalid input. Please enter a valid number.\n"
-// 						 << RESET;
-// 					continue;
-// 				}
+			// 	if (number == 0)
+			// 	{
+			// 		cout << BLUE << "Returning to category menu...\n"
+			// 			 << RESET;
+			// 		returnToCategoryMenu = true;
+			// 		break;
+			// 	}
 
-// 				if (number == 0)
-// 				{
-// 					cout << BLUE << "Returning to category menu...\n"
-// 						 << RESET;
-// 					returnToCategoryMenu = true;
-// 					break;
-// 				}
+			// 	if (!(number >= 1 && number <= 10))
+			// 	{
+			// 		cout << RED << "There is no choice like this.\n"
+			// 			 << RESET;
+			// 		answerofproduct = 'y';
+			// 		continue;
+			// 	}
 
-// 				if (!(number >= 1 && number <= 10))
-// 				{
-// 					cout << RED << "There is no choice like this.\n"
-// 						 << RESET;
-// 					answerofproduct = 'y';
-// 					continue;
-// 				}
+			// 	cout << GREEN << "Do you want to choose another product? (y/n)\n"
+			// 		 << RESET;
+			// 	cin >> answerofproduct;
 
-// 				cout << GREEN << "Do you want to choose another product? (y/n)\n"
-// 					 << RESET;
-// 				cin >> answerofproduct;
+			// } while (answerofproduct == 'y' || answerofproduct == 'Y');
+		}
+		else if (numberofcategory == 0)
+		{
+			return;
+		}
+		else
+		{
+			cout << RED << "\nInvalid input, please enter a number between 1 and 10.\n"
+				 << RESET;
+			continue;
+		}
 
-// 			} while (answerofproduct == 'y' || answerofproduct == 'Y');
-// 		}
-// 		else if (numberofcategory == 0)
-// 		{
-// 			return;
-// 		}
-// 		else
-// 		{
-// 			cout << RED << "\nInvalid input, please enter a number between 1 and 10.\n"
-// 				 << RESET;
-// 			continue;
-// 		}
+		if (returnToCategoryMenu)
+			continue;
 
-// 		if (returnToCategoryMenu)
-// 			continue;
+		cout << GREEN << "Do you want to continue? (y/n)" << RESET << endl;
+		cin >> choice;
 
-// 		cout << GREEN << "Do you want to continue? (y/n)" << RESET << endl;
-// 		cin >> choice;
+		if (choice == 'n' || choice == 'N')
+		{
+			return;
+		}
+		else if (choice == 'y' || choice == 'Y')
+		{
+			continue;
+		}
+		else
+		{
+			while (true)
+			{
+				cout << RED << "\nInvalid input, please enter 'y' or 'n'.\n"
+					 << RESET;
+				cout << YELLOW << "Do you want to continue? (y/n): " << RESET;
+				cin >> choice;
 
-// 		if (choice == 'n' || choice == 'N')
-// 		{
-// 			return;
-// 		}
-// 		else if (choice == 'y' || choice == 'Y')
-// 		{
-// 			continue;
-// 		}
-// 		else
-// 		{
-// 			while (true)
-// 			{
-// 				cout << RED << "\nInvalid input, please enter 'y' or 'n'.\n"
-// 					 << RESET;
-// 				cout << YELLOW << "Do you want to continue? (y/n): " << RESET;
-// 				cin >> choice;
-
-// 				if (choice == 'y' || choice == 'Y')
-// 				{
-// 					break;
-// 				}
-// 				else if (choice == 'n' || choice == 'N')
-// 				{
-// 					return;
-// 				}
-// 			}
-// 		}
-// 	}
-// }
+				if (choice == 'y' || choice == 'Y')
+				{
+					break;
+				}
+				else if (choice == 'n' || choice == 'N')
+				{
+					return;
+				}
+			}
 		}
 	}
+}
+void addProducts (ORDER order[numOfCustomers],PRODUCT product[numOfCategories][numOfProducts],int& id,int CategoryCase,bool& returnToCategoryMenu ){
+    int number;
+			string productInput;
+			char answerofproduct;
+			double amount;
+			int i=0;
+			do
+			{
+				cout << YELLOW << "Please choose a product by entering a number between 1 and 10.\n"
+					 << RESET;
+				cout << YELLOW << "Enter 0 to return to categories.\n"
+					 << RESET;
+				cin >> productInput;
+
+				if ((productInput.length() == 1 && isdigit(productInput[0])))
+				{
+					number = productInput[0] - '0';
+				}
+				else if (productInput == "10")
+				{
+					number = 10;
+				}
+				else
+				{
+					cout << RED << "Invalid input. Please enter a valid number.\n"
+						 << RESET;
+					continue;
+				}
+
+				if (number == 0)
+				{
+					cout << BLUE << "Returning to category menu...\n"
+						 << RESET;
+					returnToCategoryMenu = true;
+					break;
+				}
+
+				if (!(number >= 1 && number <= 10))
+				{
+					cout << RED << "There is no choice like this.\n"
+						 << RESET;
+					answerofproduct = 'y';
+					continue;
+				}
+cout<<"How many amount do you want?\n";
+cin>>amount;
+order[id-1].Amount=amount;
+				cout << GREEN << "Do you want to choose another product? (y/n)\n"
+					 << RESET;
+				cin >> answerofproduct;
+				
+					order[id-1].Products[i]=product[CategoryCase-1][number-1];
+					order[id-1].Products[i].Price=(product[CategoryCase-1][number-1].Price)*(order[id-1].Amount);
+					order[id-1].TotalPrice+=order[id-1].Products[i].Price;
+					i++;
+			} while (answerofproduct == 'y' || answerofproduct == 'Y');
+			order[id-1].CustomerID=id;
+		}
+		void ReviewOrder (ORDER order[numOfCustomers],int& id ){
+			cout << "\n";
+			cout << "|                                     ORDER CHEQUE                                     |\n";
+			cout << "\n";
+			cout << "|  No.  |     Product Name     |  Quantity  |   Price   |\n";
+			cout << "-------------------------------------------------------------------------------\n";
+			for (int i=0;i<numOfProducts;i++){
+				if (order[id-1].Products[i].Code.empty()){
+continue;
+				}
+				cout<<order[id-1].Products[i].Code
+					<<order[id-1].Products[i].Name
+					<<order[id-1]. Products[i].Price;
+					
+			}
+		}
+	
 	

@@ -91,7 +91,7 @@ int main()
 					 << RESET;
 				cout << "═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════\n";
 				cout << endl;
-				Categories(product, numOfCategories, numOfProducts);
+				Categories(product,id,NUMBEROFPRODUCT,order);
 				choice = 'y';
 				continue;
 

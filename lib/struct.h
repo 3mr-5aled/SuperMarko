@@ -47,6 +47,7 @@ struct ORDER
     int CustomerID;
     PRODUCT Products[20];
     double TotalPrice;
+    double Amount;
 }order [numOfCustomers];
 
 // ANSI escape codes for styling terminal output
