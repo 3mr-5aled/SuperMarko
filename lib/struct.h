@@ -45,10 +45,11 @@ struct PRODUCT
 struct ORDER
 {
     int CustomerID;
-    PRODUCT Products[20];
+    PRODUCT Products[numOfProducts];
     double TotalPrice;
-    double Amount;
-}order [numOfCustomers];
+    double Amount[numOfProducts];
+    int productcount = 0;
+} order[numOfCustomers];
 
 // ANSI escape codes for styling terminal output
 const string RESET = "\033[0m";

@@ -9,6 +9,7 @@
 #include "lib/read_functions.h"
 #include "lib/get_functions.h"
 #include "lib/save_functions.h"
+#include "lib/order_functions.h"
 
 using namespace std;
 
@@ -29,6 +30,7 @@ int main()
 	read_customer_from_file(customers, numOfCustomers, myfile);
 
 	int id = 0;
+	int index;
 	bool exitProgram = false;
 
 	while (!exitProgram)
@@ -91,7 +93,7 @@ int main()
 					 << RESET;
 				cout << "═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════\n";
 				cout << endl;
-				Categories(product,id,NUMBEROFPRODUCT,order);
+				Categories(product, id, NUMBEROFPRODUCT, order);
 				choice = 'y';
 				continue;
 
@@ -106,6 +108,7 @@ int main()
 				cout << CYAN << "\nYou selected: Review your order\n"
 					 << RESET;
 				cout << "═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════\n";
+				ReviewOrder(order, id);
 				cout << endl;
 
 				break;
